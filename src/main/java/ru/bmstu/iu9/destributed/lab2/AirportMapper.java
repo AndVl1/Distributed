@@ -10,5 +10,9 @@ public class AirportMapper extends Mapper<LongWritable, Text, LongWritable, Text
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         Long airportId = Long.getLong(value.toString());
+
+        context.write();
     }
+
+    private final int AIRPORT_KEY = 0;
 }
