@@ -1,5 +1,10 @@
 # Project exclude paths
 /target/
 
-/.idea
-/.settings
+.classpath
+.project
+.settings/
+
+.idea
+*.iml
+*.iws
