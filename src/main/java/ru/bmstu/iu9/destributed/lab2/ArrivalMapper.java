@@ -1,4 +1,6 @@
 package ru.bmstu.iu9.destributed.lab2;
 
-public class ArrivalMapper {
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class ArrivalMapper extends Mapper {
 }
