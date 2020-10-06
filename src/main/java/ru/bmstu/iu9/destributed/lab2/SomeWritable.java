@@ -6,11 +6,8 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class CodeComparable implements WritableComparable<> {
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
+// TODO remane
+public class SomeWritable implements WritableComparable<SomeWritable> {
 
     @Override
     public void write(DataOutput out) throws IOException {
@@ -21,4 +18,11 @@ public class CodeComparable implements WritableComparable<> {
     public void readFields(DataInput in) throws IOException {
 
     }
+
+    @Override
+    public int compareTo(SomeWritable o) {
+        return 0;
+    }
+
+
 }
