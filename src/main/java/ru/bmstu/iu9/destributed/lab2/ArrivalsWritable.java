@@ -21,8 +21,7 @@ import java.io.IOException;
  * ORIGIN_AIRPORT_SEQ_ID - ID авиапорта в классификации US DOT
  * ORIGIN_CITY_MARKET_ID - код группы аэропортов относящихся к одномугороду
  *
- * DEST_AIRPORT_ID — ID города авиапорта    
- * DEST_AIRPORT_ID — Идентификатор аэропорта
+ * DEST_AIRPORT_ID — ID города авиапорта
  *
  * WHEELS_ON — время приземления (в локальном времени hhmm)
  * ARR_TIME - время прибытия (в локальном времени hhmm)
