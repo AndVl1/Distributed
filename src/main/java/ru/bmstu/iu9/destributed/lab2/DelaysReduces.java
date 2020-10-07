@@ -1,2 +1,4 @@
-package ru.bmstu.iu9.destributed.lab2;public class DelaysReduces {
+package ru.bmstu.iu9.destributed.lab2;
+
+public class DelaysReduces {
 }
