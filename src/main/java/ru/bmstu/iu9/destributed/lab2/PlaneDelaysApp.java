@@ -5,7 +5,6 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 public class PlaneDelaysApp {
     public static void main(String[] args) throws Exception {
@@ -23,6 +22,6 @@ public class PlaneDelaysApp {
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
         job.setReducerClass(DelaysReducer.class);
 
-        System.exit(job.waitForCompletion());
+        System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 }
