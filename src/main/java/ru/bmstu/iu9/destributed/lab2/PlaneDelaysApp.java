@@ -23,6 +23,6 @@ public class PlaneDelaysApp {
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
         job.setReducerClass(DelaysReducer.class);
 
-        System.exit();
+        System.exit(job.waitForCompletion());
     }
 }
