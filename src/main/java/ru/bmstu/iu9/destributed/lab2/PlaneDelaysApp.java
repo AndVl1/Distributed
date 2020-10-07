@@ -21,8 +21,8 @@ public class PlaneDelaysApp {
         MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, ArrivalMapper.class);
 
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
-        job.setPartitionerClass(..);
-        
+        job.setPartitionerClass();
+
         job.setReducerClass(DelaysReducer.class);
 
         System.exit(job.waitForCompletion(true) ? 0 : 1);
