@@ -13,8 +13,6 @@ public class SomeWritable implements WritableComparable<SomeWritable> {
     private long AIRPORT_ID;
     private int dataIndicator;
 
-    // TEST
-
     @Override
     public void write(DataOutput out) throws IOException {
 
