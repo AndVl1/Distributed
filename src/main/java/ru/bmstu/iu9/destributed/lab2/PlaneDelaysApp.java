@@ -18,7 +18,7 @@ public class PlaneDelaysApp {
         job.setJarByClass(PlaneDelaysApp.class);
         job.setJobName("Plane delays");
         job.getConfiguration().set("mapreduce.output.textoutputformat.separator", ",");
-        TextOutputFormat.setOutputPath(job, new Path[]);
+        TextOutputFormat.setOutputPath(job, new Path(args[2]));
         MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, AirportMapper.class);
         MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, ArrivalMapper.class);
 
