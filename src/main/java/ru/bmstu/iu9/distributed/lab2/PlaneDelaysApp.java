@@ -1,4 +1,4 @@
-package ru.bmstu.iu9.destributed.lab2;
+package ru.bmstu.iu9.distributed.lab2;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.mapreduce.Job;
@@ -9,7 +9,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 public class PlaneDelaysApp {
     public static void main(String[] args) throws Exception {
         if (args.length != 4) {
-            System.err.println("Usage: ru.bmstu.iu9.destributed.lab2.PlaneDelaysApp <input path> <output path>");
+            System.err.println("Usage: ru.bmstu.iu9.distributed.lab2.lab2.PlaneDelaysApp <input path> <output path>");
             System.exit(-1);
         }
 

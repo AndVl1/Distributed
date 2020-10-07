@@ -1,4 +1,4 @@
-package ru.bmstu.iu9.destributed.lab1;
+package ru.bmstu.iu9.distributed.lab1;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
