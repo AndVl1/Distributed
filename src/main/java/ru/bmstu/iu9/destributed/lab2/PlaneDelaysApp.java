@@ -9,7 +9,7 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 public class PlaneDelaysApp {
     public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
+        if (args.length != 4) {
             System.err.println("Usage: ru.bmstu.iu9.destributed.lab2.PlaneDelaysApp <input path> <output path>");
             System.exit(-1);
         }
