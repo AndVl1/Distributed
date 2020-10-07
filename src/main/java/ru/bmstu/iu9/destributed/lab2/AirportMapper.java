@@ -10,7 +10,7 @@ public class AirportMapper extends Mapper<LongWritable, Text, LongWritable, Text
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         Text location = new Text();
-        String data = value.toString().split()
+        String[] data = value.toString().split(",", -1);
     }
 
     private final int AIRPORT_KEY = 0;
