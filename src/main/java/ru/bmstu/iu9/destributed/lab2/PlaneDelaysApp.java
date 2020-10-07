@@ -16,6 +16,7 @@ public class PlaneDelaysApp {
         Job job = Job.getInstance();
         job.setJarByClass(PlaneDelaysApp.class);
         job.setJobName("Plane delays");
+        job.getConfiguration().set();
         MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, AirportMapper.class);
         MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, ArrivalMapper.class);
 
