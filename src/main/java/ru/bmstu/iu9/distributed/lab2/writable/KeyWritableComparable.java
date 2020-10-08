@@ -11,7 +11,8 @@ import java.util.Objects;
 public class KeyWritableComparable implements WritableComparable<KeyWritableComparable> {
 
     private int airportId;
-    private int dataIndicator;
+    private int dataIndicator; // 0/1
+    private static int AIRPORT = 0;
 
     @Override
     public void write(DataOutput out) throws IOException {
