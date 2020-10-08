@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 // TODO rename
-public class SomeWritable implements WritableComparable<SomeWritable> {
+public class KeyWritableComparable implements WritableComparable<KeyWritableComparable> {
 
     private long AIRPORT_ID;
     private int dataIndicator;
@@ -24,7 +24,7 @@ public class SomeWritable implements WritableComparable<SomeWritable> {
     }
 
     @Override
-    public int compareTo(SomeWritable o) {
+    public int compareTo(KeyWritableComparable o) {
         return 0;
     }
 
@@ -32,7 +32,7 @@ public class SomeWritable implements WritableComparable<SomeWritable> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SomeWritable that = (SomeWritable) o;
+        KeyWritableComparable that = (KeyWritableComparable) o;
         return AIRPORT_ID == that.AIRPORT_ID &&
                 dataIndicator == that.dataIndicator;
     }
