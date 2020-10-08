@@ -20,6 +20,22 @@ public class KeyWritableComparable implements WritableComparable<KeyWritableComp
         this.dataIndicator = dataIndicator;
     }
 
+    public int getAirportId() {
+        return airportId;
+    }
+
+    public void setAirportId(int airportId) {
+        this.airportId = airportId;
+    }
+
+    public int getDataIndicator() {
+        return dataIndicator;
+    }
+
+    public void setDataIndicator(int dataIndicator) {
+        this.dataIndicator = dataIndicator;
+    }
+
     @Override
     public void write(DataOutput out) throws IOException {
         out.writeInt(dataIndicator);
