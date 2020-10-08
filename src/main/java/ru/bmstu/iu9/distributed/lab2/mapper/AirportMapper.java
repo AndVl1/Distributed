@@ -1,5 +1,6 @@
 package ru.bmstu.iu9.distributed.lab2.mapper;
 
+import au.com.bytecode.opencsv.CSVReader;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -12,6 +13,7 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
     protected void map(LongWritable key, Text value, Context context) throws IOException,
             InterruptedException {
         Text description = new Text();
+        CSVReader
         String[] data = value.toString().split("\n", -1);
         for (String airport : data) {
             String[] keyValue = airport.split(",");
