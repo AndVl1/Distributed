@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.Objects;
 
+
+// IDK how to name it
 public class Key implements WritableComparable<Key> {
 
     private int airportId;
