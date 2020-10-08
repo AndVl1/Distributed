@@ -5,6 +5,8 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import ru.bmstu.iu9.distributed.lab2.mapper.AirportMapper;
+import ru.bmstu.iu9.distributed.lab2.mapper.ArrivalMapper;
 
 public class PlaneDelaysApp {
     public static void main(String[] args) throws Exception {
