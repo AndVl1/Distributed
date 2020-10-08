@@ -15,6 +15,11 @@ public class KeyWritableComparable implements WritableComparable<KeyWritableComp
     private static final int AIRPORT = 0;
     private static final int FLIGHT = 1;
 
+    public KeyWritableComparable(int airportId, int dataIndicator) {
+        this.airportId = airportId;
+        this.dataIndicator = dataIndicator;
+    }
+
     @Override
     public void write(DataOutput out) throws IOException {
         out.writeInt(dataIndicator);
