@@ -5,6 +5,7 @@ import org.apache.hadoop.io.WritableComparable;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.Objects;
 
 // TODO rename
@@ -50,12 +51,7 @@ public class KeyWritableComparable implements WritableComparable<KeyWritableComp
 
     @Override
     public int compareTo(KeyWritableComparable o) {
-        if (this.equals(o)) {
-            return 0;
-        } else {
-            
-        }
-        return 0;
+        return Comparator.comparing()
     }
 
     @Override
