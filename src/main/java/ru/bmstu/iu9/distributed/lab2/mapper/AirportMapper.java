@@ -15,7 +15,7 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
             InterruptedException {
         Text description = new Text();
         CSVReader reader = new CSVReader(new StringReader(value.toString()), ',', '"', 1);
-        String[] data = value.toString().split("\n", -1);
+        String nextLine = reader.readNext();
         for (String airport : data) {
             String[] keyValue = airport.split(",");
             int code;
