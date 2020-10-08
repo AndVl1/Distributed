@@ -12,14 +12,13 @@ import ru.bmstu.iu9.distributed.lab2.reducer.DelaysReducer;
 public class PlaneDelaysApp {
     public static void main(String[] args) throws Exception {
         if (args.length != 4) {
-            System.err.println("Usage: ru.bmstu.iu9.distributed.lab2.lab2.PlaneDelaysApp <input path> <output path>");
+            System.err.println("Usage: ru.bmstu.iu9.distributed.lab2.lab2.PlaneDelaysApp <airports path> <delays path> <output path>");
             System.exit(-1);
         }
 
         Job job = Job.getInstance();
         job.setJarByClass(PlaneDelaysApp.class);
         job.setJobName("Plane delays");
-        job.getConfiguration().set("mapreduce.output.textoutputformat.separator", ",");
         MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, AirportMapper.class);
         MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, ArrivalMapper.class);
 
