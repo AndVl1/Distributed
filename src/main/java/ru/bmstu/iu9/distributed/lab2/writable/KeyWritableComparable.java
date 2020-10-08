@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.Objects;
 
-// TODO rename
 public class KeyWritableComparable implements WritableComparable<KeyWritableComparable> {
 
     private int airportId;
