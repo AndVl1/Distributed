@@ -15,7 +15,6 @@ public class KeyWritableComparable implements WritableComparable<KeyWritableComp
 
     @Override
     public void write(DataOutput out) throws IOException {
-
     }
 
     @Override
