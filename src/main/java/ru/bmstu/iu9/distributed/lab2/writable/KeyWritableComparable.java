@@ -50,6 +50,11 @@ public class KeyWritableComparable implements WritableComparable<KeyWritableComp
 
     @Override
     public int compareTo(KeyWritableComparable o) {
+        if (this.equals(o)) {
+            return 0;
+        } else {
+            
+        }
         return 0;
     }
 
