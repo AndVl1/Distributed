@@ -17,15 +17,14 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
         CSVReader reader = new CSVReader(new StringReader(value.toString()), ',', '"', 1);
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
-            String[] keyValue = airport.split(",");
             int code;
             try {
-                code = Integer.getInteger(keyValue[0]);
+                code = Integer.getInteger(nextLine[0]);
             } catch (NumberFormatException e){
-                // This is header, so we must just continue to next string
+                // This is header, so we must just continue to next line
                 continue;
             }
-            description.set(keyValue[1]);
+            description.set(nextLine[1]);
             context.write(new Key(code, AIRPORT_KEY), description);
         }
     }
