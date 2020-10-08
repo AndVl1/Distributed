@@ -11,8 +11,8 @@ import ru.bmstu.iu9.distributed.lab2.reducer.DelaysReducer;
 
 public class PlaneDelaysApp {
     public static void main(String[] args) throws Exception {
-        if (args.length != 4) {
-            System.err.println("Usage: ru.bmstu.iu9.distributed.lab2.lab2.PlaneDelaysApp <airports path> <delays path> <output path>");
+        if (args.length != 3) {
+            System.err.println("Usage: ru.bmstu.iu9.distributed.lab2.PlaneDelaysApp <airports path> <delays path> <output path>");
             System.exit(-1);
         }
 
