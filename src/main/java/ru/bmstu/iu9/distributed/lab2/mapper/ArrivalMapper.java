@@ -14,5 +14,5 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
 
     }
 
-    private final int ARRIVAL_KEY = 1;
+    private final static int ARRIVAL_KEY = 1;
 }

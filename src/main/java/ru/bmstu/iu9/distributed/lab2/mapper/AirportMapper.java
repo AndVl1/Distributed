@@ -11,15 +11,15 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException,
             InterruptedException {
-        Text location = new Text();
+        Text description = new Text();
         String[] data = value.toString().split("\n", -1);
         for (String airport : data) {
             String[] keyValue = airport.split(",");
             int code = Integer.getInteger(keyValue[0]);
-            String description = keyValue[1];
-            context.write(new Key(code, AIRPORT_KEY), new Text(description));
+            description.set(keyValue[1]);
+            context.write(new Key(code, AIRPORT_KEY), description);
         }
     }
 
-    private final int AIRPORT_KEY = 0;
+    private final static int AIRPORT_KEY = 0;
 }
