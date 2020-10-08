@@ -15,7 +15,11 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
         String[] data = value.toString().split("\n", -1);
         for (String airport : data) {
             String[] keyValue = airport.split(",");
-            int code = Integer.getInteger(keyValue[0]);
+            try {
+                int code = Integer.getInteger(keyValue[0]);
+            } catch (){
+
+            }
             description.set(keyValue[1]);
             context.write(new Key(code, AIRPORT_KEY), description);
         }
