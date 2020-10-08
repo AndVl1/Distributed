@@ -12,7 +12,7 @@ public class KeyWritableComparable implements WritableComparable<KeyWritableComp
 
     private int airportId;
     private int dataIndicator; // 0/1
-    private static int AIRPORT = 0;
+    private static final int AIRPORT = 0;
 
     @Override
     public void write(DataOutput out) throws IOException {
