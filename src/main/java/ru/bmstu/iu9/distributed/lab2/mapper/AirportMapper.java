@@ -12,7 +12,11 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
     protected void map(LongWritable key, Text value, Context context) throws IOException,
             InterruptedException {
         Text location = new Text();
-        String[] data = value.toString().split(",", -1);
+        String[] data = value.toString().split("\n", -1);
+        for (String airport : data) {
+            String[] keyValue = airport.split(",");
+            
+        }
     }
 
     private final int AIRPORT_KEY = 0;
