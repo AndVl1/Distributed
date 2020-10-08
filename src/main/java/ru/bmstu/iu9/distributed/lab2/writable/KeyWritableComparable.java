@@ -51,7 +51,8 @@ public class KeyWritableComparable implements WritableComparable<KeyWritableComp
 
     @Override
     public int compareTo(KeyWritableComparable o) {
-        return Comparator.comparing()
+        return Comparator.comparing(KeyWritableComparable::getAirportId)
+                .thenComparing(KeyWritableComparable::getDataIndicator)
     }
 
     @Override
