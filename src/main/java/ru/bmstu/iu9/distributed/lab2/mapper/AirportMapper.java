@@ -16,7 +16,8 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
         for (String airport : data) {
             String[] keyValue = airport.split(",");
             int code = Integer.getInteger(keyValue[0]);
-            String name = keyValue[1];
+            String description = keyValue[1];
+            context.write(new Key(code, AIRPORT_KEY), new Text(description));
         }
     }
 

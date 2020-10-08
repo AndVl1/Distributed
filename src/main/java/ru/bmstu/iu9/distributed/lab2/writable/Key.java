@@ -16,6 +16,10 @@ public class Key implements WritableComparable<Key> {
     private static final int AIRPORT = 0;
     private static final int FLIGHT = 1;
 
+    public Key() {
+        set(0, 0);
+    }
+
     public Key(int airportId, int dataIndicator) {
         set(airportId, dataIndicator);
     }
