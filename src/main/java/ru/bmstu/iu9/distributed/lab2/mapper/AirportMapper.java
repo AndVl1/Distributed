@@ -13,7 +13,7 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
     protected void map(LongWritable key, Text value, Context context) throws IOException,
             InterruptedException {
         Text description = new Text();
-        CSVReader
+        CSVReader reader = new CSVReader()
         String[] data = value.toString().split("\n", -1);
         for (String airport : data) {
             String[] keyValue = airport.split(",");
