@@ -7,13 +7,14 @@ import org.apache.hadoop.mapreduce.Mapper;
 import ru.bmstu.iu9.distributed.lab2.writable.Key;
 
 import java.io.IOException;
+import java.io.StringReader;
 
 public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException,
             InterruptedException {
         Text description = new Text();
-        CSVReader reader = new CSVReader()
+        CSVReader reader = new CSVReader(new StringReader(value.toString(), ))
         String[] data = value.toString().split("\n", -1);
         for (String airport : data) {
             String[] keyValue = airport.split(",");
