@@ -8,14 +8,14 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class KeyWritableComparable implements WritableComparable<KeyWritableComparable> {
+public class Key implements WritableComparable<Key> {
 
     private int airportId;
     private int dataIndicator; // 0/1
     private static final int AIRPORT = 0;
     private static final int FLIGHT = 1;
 
-    public KeyWritableComparable(int airportId, int dataIndicator) {
+    public Key(int airportId, int dataIndicator) {
         this.airportId = airportId;
         this.dataIndicator = dataIndicator;
     }
@@ -49,9 +49,9 @@ public class KeyWritableComparable implements WritableComparable<KeyWritableComp
     }
 
     @Override
-    public int compareTo(KeyWritableComparable o) {
-        return Comparator.comparing(KeyWritableComparable::getAirportId)
-                .thenComparing(KeyWritableComparable::getDataIndicator)
+    public int compareTo(Key o) {
+        return Comparator.comparing(Key::getAirportId)
+                .thenComparing(Key::getDataIndicator)
                 .compare(this, o);
     }
 
@@ -59,7 +59,7 @@ public class KeyWritableComparable implements WritableComparable<KeyWritableComp
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        KeyWritableComparable that = (KeyWritableComparable) o;
+        Key that = (Key) o;
         return airportId == that.airportId &&
                 dataIndicator == that.dataIndicator;
     }
