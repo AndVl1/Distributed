@@ -10,12 +10,12 @@ import java.util.Objects;
 // TODO rename
 public class KeyWritableComparable implements WritableComparable<KeyWritableComparable> {
 
-    private long AIRPORT_ID;
+    private long airportId;
     private int dataIndicator;
 
     @Override
     public void write(DataOutput out) throws IOException {
-        
+
     }
 
     @Override
@@ -33,12 +33,12 @@ public class KeyWritableComparable implements WritableComparable<KeyWritableComp
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         KeyWritableComparable that = (KeyWritableComparable) o;
-        return AIRPORT_ID == that.AIRPORT_ID &&
+        return airportId == that.airportId &&
                 dataIndicator == that.dataIndicator;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(AIRPORT_ID, dataIndicator);
+        return Objects.hash(airportId, dataIndicator);
     }
 }
