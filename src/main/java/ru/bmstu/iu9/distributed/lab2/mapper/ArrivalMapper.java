@@ -15,7 +15,9 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
             InterruptedException {
         CSVReader reader = new CSVReader(new StringReader(value.toString()), ',', '"', 1);
         String[] nextLine;
-        
+        while ((nextLine = reader.readNext()) != null) {
+            int code;
+        }
 
     }
 
