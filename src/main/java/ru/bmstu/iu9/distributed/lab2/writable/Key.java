@@ -16,6 +16,23 @@ public class Key implements WritableComparable<Key> {
     private static final int FLIGHT = 1;
 
     public Key(int airportId, int dataIndicator) {
+        set(airportId, dataIndicator);
+    }
+
+    @Override
+    public void write(DataOutput out) throws IOException {
+        out.writeInt(dataIndicator);
+        out.writeInt(airportId);
+    }
+
+    @Override
+    public void readFields(DataInput in) throws IOException {
+        dataIndicator = in.readInt();
+        airportId = in.readInt();
+    }
+
+
+    public void set(int airportId, int dataIndicator) {
         this.airportId = airportId;
         this.dataIndicator = dataIndicator;
     }
@@ -34,18 +51,6 @@ public class Key implements WritableComparable<Key> {
 
     public void setDataIndicator(int dataIndicator) {
         this.dataIndicator = dataIndicator;
-    }
-
-    @Override
-    public void write(DataOutput out) throws IOException {
-        out.writeInt(dataIndicator);
-        out.writeInt(airportId);
-    }
-
-    @Override
-    public void readFields(DataInput in) throws IOException {
-        dataIndicator = in.readInt();
-        airportId = in.readInt();
     }
 
     @Override
