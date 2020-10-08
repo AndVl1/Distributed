@@ -5,7 +5,6 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import ru.bmstu.iu9.distributed.lab2.writable.Key;
-
 import java.io.IOException;
 import java.io.StringReader;
 

@@ -4,6 +4,10 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
+import ru.bmstu.iu9.distributed.lab2.writable.Key;
 
-public class DelaysReducer extends Reducer<Text, IntWritable, Text, LongWritable> {
+import java.io.IOException;
+
+public class DelaysReducer extends Reducer<Key, Text, Text, LongWritable> {
+
 }

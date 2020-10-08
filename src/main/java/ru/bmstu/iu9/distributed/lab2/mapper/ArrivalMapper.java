@@ -6,17 +6,16 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import ru.bmstu.iu9.distributed.lab2.writable.Key;
-
 import java.io.IOException;
 import java.io.StringReader;
 
-public class ArrivalMapper extends Mapper<LongWritable, Text, Key, DoubleWritable> {
+public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException,
             InterruptedException {
         CSVReader reader = new CSVReader(new StringReader(value.toString()), ',', '"', 1);
         String[] nextLine;
-        DoubleWritable flightDelay = new DoubleWritable();
+        Text flightDelay = new Text();
         while ((nextLine = reader.readNext()) != null) {
             int airportCode;
             double delay;
@@ -30,7 +29,7 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, DoubleWritabl
                 System.out.println(e.getLocalizedMessage());
                 continue;
             }
-            flightDelay.set(delay);
+            flightDelay.set(Double.toString(delay));
             context.write(new Key(airportCode, ARRIVAL_KEY), flightDelay);
         }
 
