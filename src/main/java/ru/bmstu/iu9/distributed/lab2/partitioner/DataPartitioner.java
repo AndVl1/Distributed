@@ -5,15 +5,10 @@ import org.apache.hadoop.mapreduce.Partitioner;
 import org.apache.hadoop.mapreduce.lib.partition.HashPartitioner;
 import ru.bmstu.iu9.distributed.lab2.writable.Key;
 
-public class DataPartitioner<K, V> extends Partitioner<K, V> {
+public class DataPartitioner extends Partitioner<Key, Text> {
 
     @Override
-    public int getPartition(K k, V v, int numPartitions) {
-        if (!(k instanceof Key)) {
-
-        } else if (!(v instanceof Text)) {
-
-        }
+    public int getPartition(Key key, Text text, int numPartitions) {
         return 0;
     }
 }
