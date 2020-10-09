@@ -23,8 +23,9 @@ public class PlaneDelaysApp {
         job.setJobName("Plane delays");
         MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, AirportMapper.class);
         MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, ArrivalMapper.class);
-        job.setPartitionerClass(DataPartitioner.class);
+
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
+        job.setPartitionerClass(DataPartitioner.class);
 
         job.setReducerClass(DelaysReducer.class);
         job.setOutputKeyClass(Text.class);
