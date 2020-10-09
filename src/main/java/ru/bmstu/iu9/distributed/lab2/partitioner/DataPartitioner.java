@@ -7,6 +7,7 @@ public class DataPartitioner<K, V> extends Partitioner<K, V> {
 
     @Override
     public int getPartition(K k, V v, int numPartitions) {
+        if ()
         return 0;
     }
 }
