@@ -1,6 +1,7 @@
 package ru.bmstu.iu9.distributed.lab2;
 
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
@@ -26,6 +27,7 @@ public class PlaneDelaysApp {
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
 
         job.setReducerClass(DelaysReducer.class);
+        job.setOutputKeyClass(Text.class);
         job.setNumReduceTasks(2);
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
