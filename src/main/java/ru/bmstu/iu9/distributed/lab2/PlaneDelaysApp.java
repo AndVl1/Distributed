@@ -26,7 +26,6 @@ public class PlaneDelaysApp {
 
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
         job.setPartitionerClass(DataPartitioner.class);
-
         job.setReducerClass(DelaysReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
