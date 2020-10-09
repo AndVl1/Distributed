@@ -10,6 +10,7 @@ import ru.bmstu.iu9.distributed.lab2.mapper.AirportMapper;
 import ru.bmstu.iu9.distributed.lab2.mapper.ArrivalMapper;
 import ru.bmstu.iu9.distributed.lab2.partitioner.DataPartitioner;
 import ru.bmstu.iu9.distributed.lab2.reducer.DelaysReducer;
+import ru.bmstu.iu9.distributed.lab2.writable.Key;
 
 public class PlaneDelaysApp {
     public static void main(String[] args) throws Exception {
@@ -27,6 +28,8 @@ public class PlaneDelaysApp {
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
         job.setPartitionerClass(DataPartitioner.class);
         job.setReducerClass(DelaysReducer.class);
+        job.setMapOutputKeyClass(Key.class);
+
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
         job.setNumReduceTasks(2);
