@@ -7,6 +7,7 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import ru.bmstu.iu9.distributed.lab2.mapper.AirportMapper;
 import ru.bmstu.iu9.distributed.lab2.mapper.ArrivalMapper;
+import ru.bmstu.iu9.distributed.lab2.partitioner.DataPartitioner;
 import ru.bmstu.iu9.distributed.lab2.reducer.DelaysReducer;
 
 public class PlaneDelaysApp {
@@ -21,7 +22,7 @@ public class PlaneDelaysApp {
         job.setJobName("Plane delays");
         MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, AirportMapper.class);
         MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, ArrivalMapper.class);
-        
+        job.setPartitionerClass(DataPartitioner.class);
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
 
         job.setReducerClass(DelaysReducer.class);
