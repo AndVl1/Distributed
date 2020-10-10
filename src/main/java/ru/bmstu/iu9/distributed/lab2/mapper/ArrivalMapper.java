@@ -23,7 +23,7 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
                     continue;
                 }
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println("err " + e.getMessage());
                 continue;
             }
             flightDelay.set(Double.toString(delay));
