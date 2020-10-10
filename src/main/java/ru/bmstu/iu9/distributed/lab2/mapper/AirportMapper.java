@@ -24,16 +24,18 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
             }
             int code;
             try {
-                String codeString = line.substring(0, firstComma);
+                String codeString = line
+                        .substring(0, firstComma)
+                        .replace('"', '\0');
                 System.out.println(codeString);
-                code = Integer.parseInt(
-                        codeString
-                );
+                code = Integer.parseInt(codeString);
             } catch (Exception e){
                 // This is header, so we must just continue to next line
-                System.out.println("exception");
+                e.printStackTrace();
                 continue;
             }
+            String descriptionString = line.substring(firstComma).replace('"', '\0');
+            System.out.println(descriptionString + " " + code);
             description.set(
                     line.substring(firstComma).replace('"', '\0')
             );
