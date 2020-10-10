@@ -12,11 +12,7 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
     protected void reduce(Key key, Iterable<Text> values, Context context) throws IOException,
             InterruptedException {
         Iterator<Text> iter = values.iterator();
-        Text flight = iter.next();
-        while (iter.hasNext()){
-            Text delay = iter.next();
-            Text outValue = new Text(flight.toString() + "\t" + delay.toString());
-            context.write(new Text(Integer.toString(key.getAirportId())), outValue);
+        
         }
     }
 }
