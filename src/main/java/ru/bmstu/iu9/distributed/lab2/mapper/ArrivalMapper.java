@@ -17,14 +17,14 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
             int airportCode;
             String delay;
             try {
-                System.out.println(fields[14] + " " + fields[17]);
+                System.out.println(fields[14]);
                 airportCode = Integer.getInteger(fields[14]);
                 delay = fields[17];
                 if (delay.equals("0.00")) {
                     continue;
                 }
             } catch (Exception e) {
-
+                System.out.println(e.getMessage());
                 continue;
             }
             flightDelay.set(delay);
