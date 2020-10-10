@@ -27,7 +27,6 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
                 String codeString = line
                         .substring(0, firstComma)
                         .replaceAll("[\"\\s+]", "");
-                System.out.println(codeString);
                 code = Integer.parseInt(codeString);
             } catch (Exception e){
                 // This is header, so we must just continue to next line
