@@ -9,6 +9,6 @@ public class DataPartitioner extends Partitioner<Key, Text> {
 
     @Override
     public int getPartition(Key key, Text text, int numPartitions) {
-        return ;
+        return (Integer.hashCode());
     }
 }
