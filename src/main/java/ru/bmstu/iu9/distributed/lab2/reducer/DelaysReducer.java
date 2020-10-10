@@ -29,8 +29,13 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
         while (valuesIterator.hasNext()) {
             String nextDelay = valuesIterator.next().toString();
             System.out.println(nextDelay);
-            double delay = Double.parseDouble(nextDelay
-                    .replaceAll("\\s+", ""));
+            double delay;
+            try {
+                 delay = Double.parseDouble(nextDelay);
+            } catch (Exception e) {
+                System.err.println("err");
+                continue;
+            }
             sumDelay += delay;
             delaysCount++;
             if (delay > maxDelay) {
