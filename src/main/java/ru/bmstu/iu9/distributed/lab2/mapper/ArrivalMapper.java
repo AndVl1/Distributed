@@ -19,14 +19,15 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
             try {
                 System.out.println(fields[14] + " " + fields[17]);
                 airportCode = Integer.getInteger(fields[14]);
-                delay = Double.parseDouble(fields[17]);
-                if (delay == 0.0) {
+                delay = fields[17];
+                if (delay.equals("0.00")) {
                     continue;
                 }
             } catch (Exception e) {
+
                 continue;
             }
-            flightDelay.set(Double.toString(delay));
+            flightDelay.set(delay);
             context.write(new Key(airportCode, ARRIVAL_KEY), flightDelay);
         }
 
