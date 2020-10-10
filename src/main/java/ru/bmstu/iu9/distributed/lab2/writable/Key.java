@@ -75,6 +75,14 @@ public class Key implements WritableComparable<Key> {
     }
 
     @Override
+    public String toString() {
+        return "Key{" +
+                "airportId=" + airportId +
+                ", dataIndicator=" + dataIndicator +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(airportId, dataIndicator);
     }
