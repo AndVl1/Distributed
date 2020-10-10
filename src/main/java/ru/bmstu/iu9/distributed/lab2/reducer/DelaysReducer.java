@@ -13,6 +13,5 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
             InterruptedException {
         Iterator<Text> iter = values.iterator();
         
-        }
     }
 }
