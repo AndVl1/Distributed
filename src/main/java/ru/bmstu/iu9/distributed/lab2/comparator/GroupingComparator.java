@@ -5,6 +5,6 @@ import ru.bmstu.iu9.distributed.lab2.writable.Key;
 
 public class GroupingComparator extends WritableComparator {
     public GroupingComparator() {
-        super(Key.class);
+        super(Key.class, true);
     }
 }
