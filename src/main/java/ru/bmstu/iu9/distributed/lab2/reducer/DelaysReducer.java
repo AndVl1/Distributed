@@ -20,7 +20,6 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
             System.out.println("SKIP");
             return;
         }
-        System.out.println("hasNext");
 
         double maxDelay = 0;
         double minDelay = 0;
@@ -28,8 +27,9 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
         double sumDelay = 0;
 
         while (valuesIterator.hasNext()) {
-            double delay = Double.parseDouble(valuesIterator.next()
-                    .toString()
+            String nextDelay = valuesIterator.next().toString();
+            System.out.println(nextDelay);
+            double delay = Double.parseDouble(nextDelay
                     .replaceAll("\\s+", ""));
             sumDelay += delay;
             delaysCount++;
