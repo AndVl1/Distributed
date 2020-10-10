@@ -13,10 +13,22 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException,
             InterruptedException {
+        String data = value.toString();
         CSVReader reader = new CSVReader(new StringReader(value.toString()), ',', '"', 1);
-        String[] nextLine;
+
+        String[] lines = data.split("\n");
+        String nextLine;
         Text flightDelay = new Text();
-        while ((nextLine = reader.readNext()) != null) {
+        for(String line: lines) {
+            int firstComma = 0;
+            for (char symbol: line.toCharArray()){
+                if (symbol == ','){
+                    break;
+                }
+                firstComma++;
+            }
+            String info = line.substring(firstComma);
+            int code = Integer.getInteger(line.substring(0, firstComma).replace('"', ' '));
             int airportCode;
             double delay;
             try {
