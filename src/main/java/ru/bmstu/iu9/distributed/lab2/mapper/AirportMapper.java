@@ -14,7 +14,6 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
 
         String[] lines = value.toString().split("\n");
 
-        String[] nextLine;
         for(String line : lines) {
             int firstComma = 0;
             for (char symbol: line.toCharArray()){
@@ -25,12 +24,15 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
             }
             int code;
             try {
-                code = Integer.getInteger(
-                        line.substring(0, firstComma)
-                                .replace('"', '\0')
+                String codeString = line.substring(0, firstComma)
+                        .replace('"', '\0');
+                System.out.println(codeString);
+                code = Integer.parseInt(
+                        codeString
                 );
-            } catch (NumberFormatException e){
+            } catch (Exception e){
                 // This is header, so we must just continue to next line
+                System.out.println("exception");
                 continue;
             }
             description.set(
