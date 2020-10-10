@@ -23,5 +23,9 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
         int minDelay = 0;
         int delaysCount = 0;
         int sumDelay = 0;
+
+        while (vals.hasNext()) {
+            
+        }
     }
 }
