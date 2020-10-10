@@ -21,11 +21,27 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
 
         double maxDelay = 0;
         double minDelay = 0;
-        double delaysCount = 0;
-        int sumDelay = 0;
+        int delaysCount = 0;
+        double sumDelay = 0;
 
         while (vals.hasNext()) {
-            
+            double delay = Double.parseDouble(vals.next().toString());
+            sumDelay += delay;
+            delaysCount++;
+            if (delay > maxDelay) {
+                delay = maxDelay;
+            }
+            if (delay < minDelay) {
+                minDelay = delay;
+            }
         }
+        String res = MAX_DELAY_STRING + maxDelay + "\n" +
+                MIN_DELAY_STRING + minDelay + "\n" +
+                AVG_DELAY_STRING + sumDelay / delaysCount;
+        context.write(new Text(name), new Text(res));
     }
+
+    private final static String MAX_DELAY_STRING = "MAX: ";
+    private final static String MIN_DELAY_STRING = "MIN: ";
+    private final static String AVG_DELAY_STRING = "AVERAGE: ";
 }
