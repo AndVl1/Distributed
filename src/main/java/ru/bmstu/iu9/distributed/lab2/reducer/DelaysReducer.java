@@ -17,10 +17,10 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
         System.out.println("REDUCER " + key.toString() + airportName);
 
         if (!valuesIterator.hasNext()) {
-            System.out.print("SKIP");
+            System.out.println("SKIP");
             return;
         }
-        System.out.print("hasNext");
+        System.out.println("hasNext");
 
         double maxDelay = 0;
         double minDelay = 0;
