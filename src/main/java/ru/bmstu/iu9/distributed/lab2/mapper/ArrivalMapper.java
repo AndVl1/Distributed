@@ -16,11 +16,8 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
             String[] fields = line.split(",");
             int airportCode;
             double delay;
-            for (String field : fields) {
-                System.out.print(field + " ");
-            }
-            System.out.println();
             try {
+                System.out.println(fields[14] + " " + fields[17]);
                 airportCode = Integer.getInteger(fields[14]);
                 delay = Double.parseDouble(fields[17]);
                 if (delay == 0.0) {
