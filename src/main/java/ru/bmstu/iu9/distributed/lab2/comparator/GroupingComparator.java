@@ -11,6 +11,6 @@ public class GroupingComparator extends WritableComparator {
 
     @Override
     public int compare(WritableComparable a, WritableComparable b) {
-        return Integer.compare(((Key) a).getAirportId() )
+        return Integer.compare(((Key) a).getAirportId(), ((Key) b).getAirportId());
     }
 }
