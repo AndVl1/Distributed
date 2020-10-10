@@ -18,7 +18,7 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
             String delay;
             try {
                 System.out.println(fields[14]);
-                airportCode = Integer.getInteger(fields[14]);
+                airportCode = Integer.parseInt(fields[14]);
                 delay = fields[17];
                 if (delay.equals("0.00")) {
                     continue;
