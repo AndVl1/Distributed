@@ -15,18 +15,18 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
         for (String line: lines) {
             String[] fields = line.split(CSV_DELIMITER);
             int airportCode;
-            double delay;
+            String delay;
             try {
                 airportCode = Integer.parseInt(fields[14]);
-                delay = Double.parseDouble(fields[17]);
-                if (delay == 0.0) {
+                delay = fields[17];
+                if (delay.equals("0.00")) {
                     continue;
                 }
             } catch (Exception e) {
                 System.out.println("err " + e.getMessage());
                 continue;
             }
-            flightDelay.set(Double.toString(delay));
+            flightDelay.set(delay);
             context.write(new Key(airportCode, ARRIVAL_KEY), flightDelay);
         }
 
