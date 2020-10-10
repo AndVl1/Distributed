@@ -14,6 +14,8 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
 
         String name = vals.next().toString();
 
+        System.out.println(name);
+
         if (!vals.hasNext()) {
             // There are no delays, skip that
             return;
