@@ -7,4 +7,9 @@ public class GroupingComparator extends WritableComparator {
     public GroupingComparator() {
         super(Key.class, true);
     }
+
+    @Override
+    public int compare(Object a, Object b) {
+        return super.compare(a, b);
+    }
 }
