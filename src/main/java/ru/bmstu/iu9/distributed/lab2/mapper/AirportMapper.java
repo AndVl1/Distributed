@@ -33,7 +33,7 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
                 e.printStackTrace();
                 continue;
             }
-            String descriptionString = line.substring(firstComma).replace('"', '\0');
+            String descriptionString = line.substring(firstComma + 1).replace('"', '\0');
             System.out.println(descriptionString + " " + code);
             description.set(
                     line.substring(firstComma).replace('"', '\0')
