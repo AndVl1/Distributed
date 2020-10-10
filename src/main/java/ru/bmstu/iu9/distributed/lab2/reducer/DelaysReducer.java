@@ -12,9 +12,9 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
             InterruptedException {
         Iterator<Text> vals = values.iterator();
 
-        String name = vals.next().toString();
+        String airportName = vals.next().toString();
 
-        System.out.println(name);
+        System.out.println(airportName);
 
         if (!vals.hasNext()) {
             // There are no delays, skip that
@@ -37,10 +37,11 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
                 minDelay = delay;
             }
         }
-        String res = MAX_DELAY_STRING + maxDelay + "\n" +
+        String res = airportName + "\n" +
+                MAX_DELAY_STRING + maxDelay + "\n" +
                 MIN_DELAY_STRING + minDelay + "\n" +
                 AVG_DELAY_STRING + sumDelay / delaysCount;
-        context.write(new Text(name), new Text(res));
+        context.write(new Text(airportName), new Text(res));
     }
 
     private final static String MAX_DELAY_STRING = "MAX: ";
