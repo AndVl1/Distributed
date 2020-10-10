@@ -9,9 +9,7 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
     @Override
     protected void reduce(Key key, Iterable<Text> values, Context context) throws IOException,
             InterruptedException {
-        for (Text v: values) {
-            context.write(new Text(key.getDataIndicator() + ""), new Text(v.toString()));
-            context.write(new Text("Test 1"), new Text(v.toString()));
-        }
+
+        context.write(new Text("TEST1"), new Text("TEST2"));
     }
 }
