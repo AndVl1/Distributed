@@ -20,6 +20,7 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
             // There are no delays, skip that
             return;
         }
+        System.out.print("hasNext");
 
         double maxDelay = 0;
         double minDelay = 0;
