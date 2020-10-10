@@ -1,4 +1,6 @@
 package ru.bmstu.iu9.distributed.lab2.comparator;
 
-public class GroupingComparator extends  {
+import org.apache.hadoop.io.WritableComparator;
+
+public class GroupingComparator extends WritableComparator {
 }
