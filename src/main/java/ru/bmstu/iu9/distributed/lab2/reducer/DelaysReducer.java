@@ -14,7 +14,7 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
 
         String airportName = vals.next().toString();
 
-        System.out.println(airportName);
+        System.out.println(key.toString() + airportName);
 
         if (!vals.hasNext()) {
             // There are no delays, skip that
@@ -40,7 +40,7 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
         String res = airportName + "\n" +
                 MAX_DELAY_STRING + maxDelay + "\n" +
                 MIN_DELAY_STRING + minDelay + "\n" +
-                AVG_DELAY_STRING + sumDelay / delaysCount;
+                AVG_DELAY_STRING + sumDelay / delaysCount + "\n\n";
         context.write(new Text(airportName), new Text(res));
     }
 

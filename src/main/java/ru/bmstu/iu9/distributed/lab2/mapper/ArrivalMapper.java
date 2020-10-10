@@ -13,7 +13,7 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
         String[] lines = value.toString().split("\n");
         Text flightDelay = new Text();
         for (String line: lines) {
-            String[] fields = line.split(",");
+            String[] fields = line.split(CSV_DELIMITER);
             int airportCode;
             double delay;
             try {
@@ -33,4 +33,5 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
     }
 
     private final static int ARRIVAL_KEY = 1;
+    private final static String CSV_DELIMITER = ",";
 }
