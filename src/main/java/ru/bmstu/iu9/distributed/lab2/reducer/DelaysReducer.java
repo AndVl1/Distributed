@@ -12,6 +12,7 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
     protected void reduce(Key key, Iterable<Text> values, Context context) throws IOException,
             InterruptedException {
         Iterator<Text> iter = values.iterator();
+        int total = 0;
         
     }
 }
