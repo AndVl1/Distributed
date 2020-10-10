@@ -10,13 +10,13 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
     @Override
     protected void reduce(Key key, Iterable<Text> values, Context context) throws IOException,
             InterruptedException {
-        Iterator<Text> vals = values.iterator();
+        Iterator<Text> valuesIterator = values.iterator();
 
-        String airportName = vals.next().toString();
+        String airportName = valuesIterator.next().toString();
 
         System.out.println("REDUCER " + key.toString() + airportName);
 
-        if (!vals.hasNext()) {
+        if (!valuesIterator.hasNext()) {
             // There are no delays, skip that
             return;
         }
@@ -26,8 +26,8 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
         int delaysCount = 0;
         double sumDelay = 0;
 
-        while (vals.hasNext()) {
-            double delay = Double.parseDouble(vals.next().toString());
+        while (valuesIterator.hasNext()) {
+            double delay = Double.parseDouble(valuesIterator.next().toString());
             sumDelay += delay;
             delaysCount++;
             if (delay > maxDelay) {
