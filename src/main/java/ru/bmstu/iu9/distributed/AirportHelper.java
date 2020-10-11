@@ -1,6 +1,6 @@
 package ru.bmstu.iu9.distributed;
 
-public class AirportHelperAirportHelper {
+public class AirportHelper {
     private int code;
     private String description;
 

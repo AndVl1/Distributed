@@ -19,8 +19,8 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
             int airportCode;
             String delay;
             try {
-                airportCode = Integer.parseInt(fields[14]);
-                delay = fields[17];
+                airportCode = Integer.parseInt(fields[CODE_INDEX]);
+                delay = fields[DELAY_INDEX];
                 if (delay.equals("0.00")) {
                     continue;
                 }
@@ -36,4 +36,6 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
 
     private final static int ARRIVAL_KEY = 1;
     private final static String CSV_DELIMITER = ",";
+    private final static int CODE_INDEX = 14;
+    private final static int DELAY_INDEX = 17;
 }
