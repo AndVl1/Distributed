@@ -45,8 +45,7 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
                 minDelay = delay;
             }
         }
-        String res = airportName + "\n" +
-                MAX_DELAY_STRING + maxDelay + "\n" +
+        String res = MAX_DELAY_STRING + maxDelay + "\n" +
                 MIN_DELAY_STRING + minDelay + "\n" +
                 AVG_DELAY_STRING + sumDelay / delaysCount + "\n\n";
         context.write(new Text(airportName), new Text(res));
