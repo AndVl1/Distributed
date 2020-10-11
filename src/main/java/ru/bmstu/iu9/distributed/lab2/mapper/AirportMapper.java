@@ -15,24 +15,7 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
         String[] lines = value.toString().split("\n");
 
         for(String line : lines) {
-            int firstComma = 0;
-            for (char symbol: line.toCharArray()){
-                if (symbol == CSV_DELIMITER){
-                    break;
-                }
-                firstComma++;
-            }
-            int code;
-            try {
-                String codeString = line
-                        .substring(0, firstComma)
-                        .replaceAll(CHARS_TO_REMOVE, "");
-                code = Integer.parseInt(codeString);
-            } catch (Exception e){
-                // This is header, so we must just continue to next line
-                e.printStackTrace();
-                continue;
-            }
+
             description.set(
                     line.substring(firstComma + 1).replace('"', '\0')
             );
