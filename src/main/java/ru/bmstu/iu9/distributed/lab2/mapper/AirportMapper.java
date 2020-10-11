@@ -17,7 +17,10 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
 
         String[] lines = value.toString().split("\n");
 
+        int i = 0;
+
         for(String line : lines) {
+            System.out.println(TAG + " " + i++);
             AirportHelper airportInfo = StringUtils.trimCodeAndName(line, CSV_DELIMITER);
             if (airportInfo == null) {
                 continue;
@@ -31,4 +34,5 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
 
     private final static int AIRPORT_KEY = 0;
     private final static char CSV_DELIMITER = ',';
+    private final static String TAG = "AIRPORT MAPPER";
 }

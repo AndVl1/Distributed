@@ -11,13 +11,7 @@ public class StringUtils {
 
     // Trim csv ***, "name"; where *** is integer code
     public static AirportHelper trimCodeAndName(String line, char delimiter) {
-        int firstComma = 0;
-        for (char symbol: line.toCharArray()){
-            if (symbol == delimiter){
-                break;
-            }
-            firstComma++;
-        }
+        int firstComma = line.indexOf(delimiter);
         int code;
         try {
             String codeString = line

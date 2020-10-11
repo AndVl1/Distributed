@@ -14,10 +14,10 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
 
         String airportName = valuesIterator.next().toString();
 
-        System.out.println("REDUCER " + key.toString() + airportName);
+//        System.out.println("REDUCER " + key.toString() + airportName);
 
         if (!valuesIterator.hasNext()) {
-            System.out.println("SKIP");
+//            System.out.println("SKIP");
             return;
         }
 
@@ -28,12 +28,12 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
 
         while (valuesIterator.hasNext()) {
             String nextDelay = valuesIterator.next().toString();
-            System.out.println(nextDelay);
+//            System.out.println(nextDelay);
             double delay;
             try {
                  delay = Double.parseDouble(nextDelay);
             } catch (Exception e) {
-                System.err.println("err");
+//                System.err.println("err");
                 continue;
             }
             sumDelay += delay;
