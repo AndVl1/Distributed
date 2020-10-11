@@ -16,7 +16,8 @@ import ru.bmstu.iu9.distributed.lab2.writable.Key;
 public class PlaneDelaysApp {
     public static void main(String[] args) throws Exception {
         if (args.length != 3) {
-            System.err.println("Usage: ru.bmstu.iu9.distributed.lab2.PlaneDelaysApp <airports path> <delays path> <output path>");
+            System.err.println("Usage: ru.bmstu.iu9.distributed.lab2.PlaneDelaysApp " +
+                    "<airports path> <delays path> <output path>");
             System.exit(-1);
         }
 
@@ -27,13 +28,15 @@ public class PlaneDelaysApp {
         MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, ArrivalMapper.class);
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
 
-//        job.setPartitionerClass(DataPartitioner.class);
+        job.setPartitionerClass(DataPartitioner.class);
         job.setReducerClass(DelaysReducer.class);
+        job.setGroupingComparatorClass(GroupingComparator.class);
         job.setMapOutputKeyClass(Key.class);
-//        job.setGroupingComparatorClass(GroupingComparator.class);
+        job.setMapOutputValueClass(Text.class);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
+
         job.setNumReduceTasks(2);
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
