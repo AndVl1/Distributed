@@ -1,2 +1,5 @@
-package ru.bmstu.iu9.distributed;public class StringUtils {
+package ru.bmstu.iu9.distributed;
+
+public class StringUtils {
+
 }
