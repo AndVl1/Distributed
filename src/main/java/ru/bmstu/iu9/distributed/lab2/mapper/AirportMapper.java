@@ -18,11 +18,11 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
 
         String line = value.toString();
 
-        System.out.println(key.get());
-        AirportHelper airportInfo = StringUtils.trimCodeAndName(line, CSV_DELIMITER);
-        if (airportInfo == null) {
+        if (key.get() == 0) {
             return;
         }
+
+        AirportHelper airportInfo = StringUtils.trimCodeAndName(line, CSV_DELIMITER);
         description.set(
                 airportInfo.getDescription()
         );
