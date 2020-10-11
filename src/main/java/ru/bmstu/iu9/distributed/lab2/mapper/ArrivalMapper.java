@@ -3,6 +3,7 @@ package ru.bmstu.iu9.distributed.lab2.mapper;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
+import ru.bmstu.iu9.distributed.StringUtils;
 import ru.bmstu.iu9.distributed.lab2.writable.Key;
 import java.io.IOException;
 
@@ -13,7 +14,8 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
         String[] lines = value.toString().split("\n");
         Text flightDelay = new Text();
         for (String line: lines) {
-            String[] fields = line.split(CSV_DELIMITER);
+
+            String[] fields = StringUtils.trimSimpleCsv(line, CSV_DELIMITER);
             int airportCode;
             String delay;
             try {
