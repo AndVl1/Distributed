@@ -6,6 +6,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import ru.bmstu.iu9.distributed.AirportHelper;
 import ru.bmstu.iu9.distributed.StringUtils;
 import ru.bmstu.iu9.distributed.lab2.writable.Key;
+
 import java.io.IOException;
 
 public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
@@ -15,21 +16,18 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
             InterruptedException {
         Text description = new Text();
 
-        String[] lines = value.toString().split("\n");
+        String line = value.toString();
 
-        int i = 0;
-
-        for(String line : lines) {
-            System.out.println(TAG + " " + i++);
-            AirportHelper airportInfo = StringUtils.trimCodeAndName(line, CSV_DELIMITER);
-            if (airportInfo == null) {
-                continue;
-            }
-            description.set(
-                    airportInfo.getDescription()
-            );
-            context.write(new Key(airportInfo.getCode(), AIRPORT_KEY), description);
+        System.out.println(key.get());
+        AirportHelper airportInfo = StringUtils.trimCodeAndName(line, CSV_DELIMITER);
+        if (airportInfo == null) {
+            return;
         }
+        description.set(
+                airportInfo.getDescription()
+        );
+        context.write(new Key(airportInfo.getCode(), AIRPORT_KEY), description);
+
     }
 
     private final static int AIRPORT_KEY = 0;
