@@ -21,11 +21,11 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
             try {
                 airportCode = Integer.parseInt(fields[CODE_INDEX]);
                 delay = fields[DELAY_INDEX];
-                if (delay.equals("0.00")) {
+                if (delay.equals(ZERO_DELAY_STRING)) {
                     continue;
                 }
             } catch (Exception e) {
-                System.out.println("err " + e.getMessage());
+                System.out.println(TAG + " " + e.getMessage());
                 continue;
             }
             flightDelay.set(delay);
@@ -38,4 +38,6 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
     private final static String CSV_DELIMITER = ",";
     private final static int CODE_INDEX = 14;
     private final static int DELAY_INDEX = 17;
+    private final static String ZERO_DELAY_STRING = "0.00";
+    private final static String TAG = "ARRIVAL MAPPER";
 }
