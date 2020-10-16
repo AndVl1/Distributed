@@ -61,7 +61,6 @@ public class Key implements WritableComparable<Key> {
     @Override
     public int compareTo(Key o) {
         return Comparator.comparing(Key::getAirportId)
-                .thenComparing(Key::getDataIndicator)
                 .compare(this, o);
     }
 
