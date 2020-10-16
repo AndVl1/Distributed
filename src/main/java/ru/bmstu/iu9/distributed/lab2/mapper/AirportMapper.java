@@ -18,16 +18,13 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
 
         String line = value.toString();
 
-        if (key.get() == 0) {
-            return;
+        if (key.get() != 0) {
+            AirportHelper airportInfo = StringUtils.trimCodeAndName(line, CSV_DELIMITER);
+            description.set(
+                    airportInfo.getDescription()
+            );
+            context.write(new Key(airportInfo.getCode(), AIRPORT_KEY), description);
         }
-
-        AirportHelper airportInfo = StringUtils.trimCodeAndName(line, CSV_DELIMITER);
-        description.set(
-                airportInfo.getDescription()
-        );
-        context.write(new Key(airportInfo.getCode(), AIRPORT_KEY), description);
-
     }
 
     private final static int AIRPORT_KEY = 0;

@@ -21,17 +21,13 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
         try {
             airportCode = Integer.parseInt(fields[CODE_INDEX]);
             delay = fields[DELAY_INDEX];
-            if (delay.equals(ZERO_DELAY_STRING)) {
-                return;
+            if (!delay.equals(ZERO_DELAY_STRING)) {
+                flightDelay.set(delay);
+                context.write(new Key(airportCode, ARRIVAL_KEY), flightDelay);
             }
         } catch (Exception e) {
-//                System.out.println(TAG + " " + e.getMessage());
-            return;
+            System.out.println(TAG + " " + e.getMessage());
         }
-        flightDelay.set(delay);
-        context.write(new Key(airportCode, ARRIVAL_KEY), flightDelay);
-
-
     }
 
     private final static int ARRIVAL_KEY = 1;
