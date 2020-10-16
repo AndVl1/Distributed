@@ -28,11 +28,12 @@ public class PlaneDelaysApp {
         MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, ArrivalMapper.class);
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
 
+        job.setMapOutputKeyClass(Key.class);
+        job.setMapOutputValueClass(Text.class);
+
         job.setPartitionerClass(DataPartitioner.class);
         job.setReducerClass(DelaysReducer.class);
         job.setGroupingComparatorClass(GroupingComparator.class);
-        job.setMapOutputKeyClass(Key.class);
-        job.setMapOutputValueClass(Text.class);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
