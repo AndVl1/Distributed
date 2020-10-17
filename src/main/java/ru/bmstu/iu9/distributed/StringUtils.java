@@ -14,9 +14,9 @@ public class StringUtils {
         int firstComma = line.indexOf(delimiter);
         int code;
 
-        String codeString = line
-                .substring(0, firstComma)
-                .replaceAll(SPEC_SYMBOLS, "");
+        String codeString = removeSpecSymbols(
+                line.substring(0, firstComma)
+        );
         code = Integer.parseInt(codeString);
 
         String description = line.substring(firstComma + 1).replace('"', '\0');
@@ -24,6 +24,10 @@ public class StringUtils {
         result.setCode(code);
         result.setDescription(description);
         return result;
+    }
+
+    public static String removeSpecSymbols(String line){
+        return line.replaceAll(SPEC_SYMBOLS, "");
     }
 
     private final static String SPEC_SYMBOLS = "[\"\\s+]";
