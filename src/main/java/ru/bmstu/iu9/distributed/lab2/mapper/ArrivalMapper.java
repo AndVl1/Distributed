@@ -36,7 +36,7 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
     private final static int ARRIVAL_KEY = 1;
     private final static String CSV_DELIMITER = ",";
     private final static int CODE_INDEX = 14;
-    private final static int DELAY_INDEX = 17;
+    private final static int DELAY_INDEX = 18;
     private final static String ZERO_DELAY_STRING = "0.00";
     private final static String TAG = "ARRIVAL MAPPER";
 }
