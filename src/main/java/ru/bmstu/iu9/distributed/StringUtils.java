@@ -19,7 +19,7 @@ public class StringUtils {
         );
         code = Integer.parseInt(codeString);
 
-        String description = line.substring(firstComma + 1).replace('"', '\0');
+        String description = line.substring(firstComma + 1).replaceAll("\\", "");
         AirportHelper result = new AirportHelper();
         result.setCode(code);
         result.setDescription(description);
@@ -31,4 +31,5 @@ public class StringUtils {
     }
 
     private final static String SPEC_SYMBOLS = "[\"\\s+]";
+    private 
 }
