@@ -83,6 +83,6 @@ public class Key implements WritableComparable<Key> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(airportId, dataIndicator);
+        return Objects.hash(airportId);
     }
 }
