@@ -61,11 +61,7 @@ public class Key implements WritableComparable<Key> {
     @Override
     public int compareTo(Key o) {
         if (this.getAirportId() == o.getAirportId()) {
-            if (dataIndicator == AIRPORT) {
-                return -1;
-            } else {
-                return 1;
-            }
+            return (getDataIndicator() == AIRPORT)? -1: 1;
         }
         return this.getAirportId() - o.getAirportId();
     }
@@ -74,9 +70,8 @@ public class Key implements WritableComparable<Key> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Key that = (Key) o;
-        return airportId == that.airportId;// &&
-//                dataIndicator == that.dataIndicator;
+        Key key = (Key) o;
+        return airportId == key.airportId;
     }
 
     @Override
