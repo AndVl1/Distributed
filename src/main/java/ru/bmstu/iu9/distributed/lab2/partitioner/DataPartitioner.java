@@ -9,6 +9,6 @@ public class DataPartitioner extends Partitioner<Key, Text> {
 
     @Override
     public int getPartition(Key key, Text text, int numPartitions) {
-        return (Integer.hashCode(key.getAirportId()) & Integer.MAX_VALUE) % numPartitions;
+        return (key.hashCode() & Integer.MAX_VALUE) % numPartitions;
     }
 }
