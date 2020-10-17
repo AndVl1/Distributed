@@ -20,12 +20,13 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
 
         String[] fields = StringUtils.trimSimpleCsv(line, CSV_DELIMITER);
         int airportCode;
-        String delay;
+        String delayString;
         try {
             airportCode = Integer.parseInt(fields[CODE_INDEX]);
-            delay = fields[DELAY_INDEX];
-            if (!(Double.parseDouble(delay) > 0.0) && !delay.isEmpty()) {
-                flightDelay.set(delay);
+            delayString = fields[DELAY_INDEX];
+            System.out.println(delayString);
+            if (delayString!=null && !delayString.isEmpty() && !(Double.parseDouble(delayString) > 0.0)) {
+                flightDelay.set(delayString);
                 context.write(new Key(airportCode, ARRIVAL_KEY), flightDelay);
             }
         } catch (Exception e) {
