@@ -19,7 +19,7 @@ public class StringUtils {
         );
         code = Integer.parseInt(codeString);
 
-        String description = line.substring(firstComma + 1).replaceAll("\\", "");
+        String description = line.substring(firstComma + 1).replaceAll(CSV_STRING_SYMBOL, "");
         AirportHelper result = new AirportHelper();
         result.setCode(code);
         result.setDescription(description);
@@ -31,5 +31,5 @@ public class StringUtils {
     }
 
     private final static String SPEC_SYMBOLS = "[\"\\s+]";
-    private 
+    private final static String CSV_STRING_SYMBOL = "\"";
 }
