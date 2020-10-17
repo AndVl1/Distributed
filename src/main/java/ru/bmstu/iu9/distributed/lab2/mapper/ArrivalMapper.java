@@ -24,7 +24,9 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
         try {
             airportCode = Integer.parseInt(fields[CODE_INDEX]);
             delayString = fields[DELAY_INDEX];
-            if (delayString != null && !delayString.isEmpty() && !(Double.parseDouble(delayString) > 0.0)) {
+            if (delayString != null &&
+                    !delayString.isEmpty() &&
+                    Double.parseDouble(delayString) > 0.0) {
                 flightDelay.set(delayString);
                 System.out.println(airportCode + " " + flightDelay);
                 context.write(new Key(airportCode, ARRIVAL_KEY), flightDelay);
