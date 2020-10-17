@@ -69,8 +69,8 @@ public class Key implements WritableComparable<Key> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Key that = (Key) o;
-        return airportId == that.airportId &&
-                dataIndicator == that.dataIndicator;
+        return airportId == that.airportId;// &&
+//                dataIndicator == that.dataIndicator;
     }
 
     @Override
