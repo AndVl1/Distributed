@@ -11,6 +11,10 @@ import java.io.IOException;
 public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
     @Override
     protected void map(LongWritable key, Text value, Context context) {
+        if (key.get() == 0) {
+            return;
+        }
+
         String line = value.toString();
         Text flightDelay = new Text();
 
