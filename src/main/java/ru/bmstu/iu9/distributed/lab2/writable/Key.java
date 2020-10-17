@@ -60,8 +60,14 @@ public class Key implements WritableComparable<Key> {
 
     @Override
     public int compareTo(Key o) {
-        return Comparator.comparing(Key::getAirportId)
-                .compare(this, o);
+        if (this.getAirportId() == o.getAirportId()) {
+            if (dataIndicator == AIRPORT) {
+                return -1;
+            } else {
+                return 1;
+            }
+        }
+        return this.getAirportId() - o.getAirportId();
     }
 
     @Override
