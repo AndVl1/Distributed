@@ -4,17 +4,15 @@ import org.apache.hadoop.io.WritableComparable;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.Objects;
-
 
 // IDK how to name it
 public class Key implements WritableComparable<Key> {
 
     private int airportId;
     private int dataIndicator; // 0/1
-    private static final int AIRPORT = 0;
-    private static final int FLIGHT = 1;
+    private static final int IS_AIRPORT = 0;
+    private static final int IS_FLIGHT = 1;
 
     public Key() {
         set(0, 0);
@@ -26,14 +24,14 @@ public class Key implements WritableComparable<Key> {
 
     @Override
     public void write(DataOutput out) throws IOException {
-        out.writeInt(dataIndicator);
         out.writeInt(airportId);
+        out.writeInt(dataIndicator);
     }
 
     @Override
     public void readFields(DataInput in) throws IOException {
-        dataIndicator = in.readInt();
         airportId = in.readInt();
+        dataIndicator = in.readInt();
     }
 
 
@@ -61,7 +59,7 @@ public class Key implements WritableComparable<Key> {
     @Override
     public int compareTo(Key o) {
         if (this.getAirportId() == o.getAirportId()) {
-            return (getDataIndicator() == AIRPORT)? -1: 1;
+            return (getDataIndicator() == IS_AIRPORT)? -1: 1;
         }
         return this.getAirportId() - o.getAirportId();
     }
