@@ -18,7 +18,7 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
 
         String line = value.toString();
 
-        if (key.get() != 0) {
+        if (key.get() != FIRST_LINE_CODE) {
             AirportHelper airportInfo = StringUtils.trimCodeAndName(line, CSV_DELIMITER);
             description.set(
                     airportInfo.getDescription()
@@ -27,6 +27,7 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
         }
     }
 
+    private final static int FIRST_LINE_CODE = 0;
     private final static int AIRPORT_KEY = 0;
     private final static char CSV_DELIMITER = ',';
     private final static String TAG = "AIRPORT MAPPER";
