@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
     @Override
     protected void map(LongWritable key, Text value, Context context) {
-        if (key.get() == 0) {
+        if (key.get() == FIRST_LINE_CODE) {
             return;
         }
 
@@ -36,7 +36,7 @@ public class ArrivalMapper extends Mapper<LongWritable, Text, Key, Text> {
         }
     }
 
-    
+    private final static int FIRST_LINE_CODE = 0;
     private final static int ARRIVAL_KEY = 1;
     private final static String CSV_DELIMITER = ",";
     private final static int CODE_INDEX = 14;
