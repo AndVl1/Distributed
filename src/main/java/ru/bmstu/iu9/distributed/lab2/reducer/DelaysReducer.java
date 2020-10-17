@@ -39,7 +39,7 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
             sumDelay += delay;
             delaysCount++;
             if (delay > maxDelay) {
-                delay = maxDelay;
+                maxDelay = delay;
             }
             if (delay < minDelay) {
                 minDelay = delay;
