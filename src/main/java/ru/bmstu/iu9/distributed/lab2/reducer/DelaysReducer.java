@@ -21,8 +21,8 @@ public class DelaysReducer extends Reducer<Key, Text, Text, Text> {
             return;
         }
 
-        double maxDelay = 0;
-        double minDelay = 0;
+        double maxDelay = Integer.MIN_VALUE;
+        double minDelay = Integer.MAX_VALUE;
         int delaysCount = 0;
         double sumDelay = 0;
 
