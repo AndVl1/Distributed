@@ -4,21 +4,28 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>hadoop-examples</groupId>
-    <artifactId>hadoop-examples</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>distributed-labs</groupId>
+    <artifactId>distributed-labs</artifactId>
+    <version>1</version>
 
     <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.12</artifactId>
+            <version>2.4.7</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
             <version>2.10.1</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>net.sf.opencsv</groupId>-->
-<!--            <artifactId>opencsv</artifactId>-->
-<!--            <version>2.3</version>-->
-<!--        </dependency>-->
+
     </dependencies>
     <build>
         <plugins>
