@@ -31,5 +31,5 @@ public class StringUtils {
     }
 
     private final static String SPEC_SYMBOLS = "[\"\\s+]";
-    private final static String CSV_STRING_SYMBOL = "\"";
+    final static String CSV_STRING_SYMBOL = "\"";
 }
