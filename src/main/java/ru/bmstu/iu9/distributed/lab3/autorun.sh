@@ -1,4 +1,4 @@
-
+mvn package
 
 hadoop fs -rm -f -r output
 
