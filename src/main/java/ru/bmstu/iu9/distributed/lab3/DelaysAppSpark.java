@@ -9,5 +9,6 @@ public class DelaysAppSpark {
         JavaSparkContext sc = new JavaSparkContext(conf);
         sc.textFile("airports.csv");
         sc.textFile("flights.csv");
+        
     }
 }
