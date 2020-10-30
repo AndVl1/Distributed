@@ -8,6 +8,6 @@ public class DelaysAppSpark {
         SparkConf conf = new SparkConf().setAppName("Delays");
         JavaSparkContext sc = new JavaSparkContext(conf);
         sc.textFile("airports.csv");
-        sc.textFile("")
+        sc.textFile("flights.csv");
     }
 }
