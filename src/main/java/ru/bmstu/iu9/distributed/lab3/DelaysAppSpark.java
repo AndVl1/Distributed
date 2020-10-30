@@ -5,5 +5,5 @@ import org.apache.spark.api.java.JavaSparkContext;
 
 public class DelaysAppSpark {
     SparkConf conf = new SparkConf().setAppName("Delays");
-    JavaSparkContext sc = 
+    JavaSparkContext sc = new JavaSparkContext(conf);
 }
