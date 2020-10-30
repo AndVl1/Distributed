@@ -32,7 +32,8 @@ public class AirportHelper {
         );
         code = Integer.parseInt(codeString);
 
-        String description = line.substring(firstComma + 1).replaceAll(CSV_STRING_SYMBOL, "");
+        String description = removeSpecSymbols(line.substring(firstComma + 1));
+
         AirportHelper result = new AirportHelper();
         result.setCode(code);
         result.setDescription(description);
