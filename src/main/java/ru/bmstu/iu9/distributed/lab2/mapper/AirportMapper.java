@@ -19,7 +19,7 @@ public class AirportMapper extends Mapper<LongWritable, Text, Key, Text> {
         String line = value.toString();
 
         if (key.get() != FIRST_LINE_CODE) {
-            AirportHelper airportInfo = StringUtils.trimCodeAndName(line, CSV_DELIMITER);
+            AirportHelper airportInfo = AirportHelper.trimCodeAndName(line, CSV_DELIMITER);
             description.set(
                     airportInfo.getDescription()
             );
