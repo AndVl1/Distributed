@@ -37,4 +37,5 @@ public class AirportHelper {
         result.setDescription(description);
         return result;
     }
+    private final static String CSV_STRING_SYMBOL = "\"";
 }
