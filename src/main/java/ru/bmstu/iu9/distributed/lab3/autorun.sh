@@ -1,1 +1,1 @@
-spark-submit --class <Имя класса с main функцией> --master yarn-client --num-executors 3 <путь к jar файлу>
+spark-submit --class DelaysAppSpark --master yarn-client --num-executors 3 <путь к jar файлу>
