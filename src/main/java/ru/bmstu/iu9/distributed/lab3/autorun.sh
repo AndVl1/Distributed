@@ -2,4 +2,4 @@ spark-submit --class ru.bmstu.ui9.distributed.lab3.DelaysAppSpark --master yarn-
 
 rm -r output
 
-hadoop fs 
+hadoop fs -copy
