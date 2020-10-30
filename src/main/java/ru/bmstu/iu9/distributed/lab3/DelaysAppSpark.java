@@ -7,6 +7,7 @@ public class DelaysAppSpark {
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("Delays");
         JavaSparkContext sc = new JavaSparkContext(conf);
-        sc.textFile("");
+        sc.textFile("airports.csv");
+        sc.textFile("")
     }
 }
