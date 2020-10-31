@@ -5,9 +5,6 @@ import org.apache.spark.api.java.JavaRDD;
 import ru.bmstu.iu9.distributed.AirportHelper;
 import scala.Tuple2;
 
-import static ru.bmstu.iu9.distributed.StringUtils.CSV_STRING_SYMBOL;
-import static ru.bmstu.iu9.distributed.StringUtils.removeSpecSymbols;
-
 public class Utils {
     public static JavaRDD<String> getRddData(JavaRDD<String> data) {
         return removeCsvTitleString(data);
