@@ -35,7 +35,9 @@ public class DelaysAppSpark {
                     int flightsWithDelay = 0;
                     int cancelledFlights = 0;
                     int i = 0;
-                    
+                    while (flightsIterator.hasNext()) {
+                        
+                    }
                 })
                 .map();
 
