@@ -4,6 +4,10 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.broadcast.Broadcast;
+import scala.Tuple2;
+
+import java.util.Map;
 
 public class DelaysAppSpark {
 
@@ -16,13 +20,15 @@ public class DelaysAppSpark {
         JavaRDD<String> rawAirport = Utils.getRddData(sc.textFile(AIRPORTS_FILE_PATH));
         JavaRDD<String> rawFlights = Utils.getRddData(sc.textFile(FLIGHTS_FILE_PATH));
 
-        JavaRDD<FlightData> flightsRdd = Utils.getFlightsRdd(rawFlights);
-
         JavaPairRDD<String, AirportData> airportsPairRdd = Utils.getAirportsPairRdd(rawAirport);
+        JavaPairRDD<Tuple2<String, String>, FlightData> flights = Utils.getFlightsId(
+                Utils.getFlightsRdd(rawFlights)
+        );
 
-        final String line = rawAirport.first();
-        rawAirport = rawFlights.filter(s -> !s.equals(line));
+        final Broadcast<Map<String, AirportData>> broadcast = sc.broadcast(airportsPairRdd.collectAsMap());
 
+        flights.groupByKey()
+                .mapValues(flight -> {});
 
     }
 }
