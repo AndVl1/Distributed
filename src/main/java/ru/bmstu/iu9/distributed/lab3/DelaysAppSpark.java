@@ -51,6 +51,8 @@ public class DelaysAppSpark {
                 })
                 .map(data -> {
                     AirportData originAirport = airportBroadcasted.getValue().get(data._1()._1());
+                    AirportData destinationAirport = airportBroadcasted.getValue().get(data._1()._2());
+                    
                 });
 
     }
