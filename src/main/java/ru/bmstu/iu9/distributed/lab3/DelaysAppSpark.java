@@ -14,6 +14,7 @@ public class DelaysAppSpark {
 
     public static final String AIRPORTS_FILE_PATH = "airports.csv";
     public static final String FLIGHTS_FILE_PATH = "flights.csv";
+    public static final String OUTPUT_PATH = "output";
 
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("Delays");
@@ -53,7 +54,6 @@ public class DelaysAppSpark {
                     AirportData originAirport = airportBroadcasted.getValue().get(data._1()._1());
                     AirportData destinationAirport = airportBroadcasted.getValue().get(data._1()._2());
                     return new Tuple2<>(new Tuple2<>(originAirport, destinationAirport), data._2());
-                }).saveAsTextFile("output");
-
+                }).saveAsTextFile(OUTPUT_PATH);
     }
 }
