@@ -19,10 +19,13 @@ public class DelaysAppSpark {
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("Delays");
         JavaSparkContext sc = new JavaSparkContext(conf);
+        // убираю заголовки (названия колонок)
         JavaRDD<String> rawAirport = CsvUtils.getRddData(sc.textFile(AIRPORTS_FILE_PATH));
         JavaRDD<String> rawFlights = CsvUtils.getRddData(sc.textFile(FLIGHTS_FILE_PATH));
 
+        // пара (airportId | data)
         JavaPairRDD<String, AirportData> airportsPairRdd = CsvUtils.getAirportsPairRdd(rawAirport);
+        
         JavaRDD<FlightData> flightsRdd1 = CsvUtils.getFlightsRdd(rawFlights);
         JavaPairRDD<Tuple2<String, String>, FlightData> flightsPairRdd = CsvUtils.getFlightIdsToDataAccordance(flightsRdd1);
 
