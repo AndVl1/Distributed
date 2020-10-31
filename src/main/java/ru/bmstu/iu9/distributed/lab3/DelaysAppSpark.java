@@ -45,7 +45,7 @@ public class DelaysAppSpark {
                             delayedFlights++;
                         }
                     }
-                    return new Tuple2()
+                    return new Tuple2(maxDelay, )
                 })
                 .map();
 
