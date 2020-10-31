@@ -15,9 +15,8 @@ public class Utils {
                 .map(line -> line.split(CSV_DELIMITER))
                 .map(flightData -> {
                     if(isCanceled(flightData[CANCELLATION_INDEX])) {
-                        return new FlightData(flightData[ORIGIN_AIRPORT_INDEX],flightData[DESTINATION_AIRPORT_INDEX]);
+                        return new FlightData(flightData[ORIGIN_AIRPORT_INDEX], flightData[DESTINATION_AIRPORT_INDEX]);
                     }
-//                    String delay = flightData[DELAY_INDEX].isEmpty() ? NO_DELAY_TIME : flightData[DELAY_INDEX];
                     double delay = getDelay(flightData[DELAY_INDEX]);
                     return new FlightData(flightData[ORIGIN_AIRPORT_INDEX],
                             flightData[DESTINATION_AIRPORT_INDEX],
