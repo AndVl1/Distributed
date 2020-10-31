@@ -36,8 +36,8 @@ public class CsvUtils {
         });
     }
 
-    // accordance of (flights destination and origin ids) to (flight rdd)
-    public static JavaPairRDD<Tuple2<String, String>, FlightData> getFlightsIdsToRddAccordance(JavaRDD<FlightData> flights){
+    // accordance of (flights destination and origin ids) to (flight data)
+    public static JavaPairRDD<Tuple2<String, String>, FlightData> getFlightIdsToDataAccordance(JavaRDD<FlightData> flights){
         return flights.mapToPair(flight -> new Tuple2<>(
                 new Tuple2<>(flight.getOriginId(), flight.getDestinationId()),
                 flight

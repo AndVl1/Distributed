@@ -24,7 +24,7 @@ public class DelaysAppSpark {
 
         JavaPairRDD<String, AirportData> airportsPairRdd = CsvUtils.getAirportsPairRdd(rawAirport);
         JavaRDD<FlightData> flightsRdd1 = CsvUtils.getFlightsRdd(rawFlights);
-        JavaPairRDD<Tuple2<String, String>, FlightData> flightsPairRdd = CsvUtils.getFlightsIdsToRddAccordance(flightsRdd1);
+        JavaPairRDD<Tuple2<String, String>, FlightData> flightsPairRdd = CsvUtils.getFlightIdsToDataAccordance(flightsRdd1);
 
         final Broadcast<Map<String, AirportData>> airportBroadcasted = sc.broadcast(airportsPairRdd.collectAsMap());
 
