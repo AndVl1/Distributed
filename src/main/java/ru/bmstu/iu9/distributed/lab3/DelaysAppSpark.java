@@ -32,7 +32,8 @@ public class DelaysAppSpark {
                 .mapValues(flight -> {
                     Iterator<FlightData> flightsIterator = flight.iterator();
                     double maxDelay = 0;
-                    double flightsWithDelay = 0;
+                    int flightsWithDelay = 0;
+                    
                 })
                 .map();
 
