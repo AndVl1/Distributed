@@ -24,11 +24,11 @@ public class DelaysAppSpark {
 
         JavaPairRDD<String, AirportData> airportsPairRdd = CsvUtils.getAirportsPairRdd(rawAirport);
         JavaRDD<FlightData> flightsRdd1 = CsvUtils.getFlightsRdd(rawFlights);
-        JavaPairRDD<Tuple2<String, String>, FlightData> flightsRdd = CsvUtils.getFlightsId(flightsRdd1);
+        JavaPairRDD<Tuple2<String, String>, FlightData> flightsPairRdd = CsvUtils.getFlightsPairRdd(flightsRdd1);
 
         final Broadcast<Map<String, AirportData>> airportBroadcasted = sc.broadcast(airportsPairRdd.collectAsMap());
 
-        flightsRdd.groupByKey()
+        flightsPairRdd.groupByKey()
                 .mapValues(flight -> {
                     Iterator<FlightData> flightsIterator = flight.iterator();
                     double maxDelay = 0;

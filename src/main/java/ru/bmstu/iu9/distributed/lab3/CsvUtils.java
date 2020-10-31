@@ -36,7 +36,7 @@ public class CsvUtils {
         });
     }
 
-    public static JavaPairRDD<Tuple2<String, String>, FlightData> getFlightsId(JavaRDD<FlightData> flights){
+    public static JavaPairRDD<Tuple2<String, String>, FlightData> getFlightsPairRdd(JavaRDD<FlightData> flights){
         return flights.mapToPair(flight -> new Tuple2<>(
                 new Tuple2<>(flight.getOriginId(), flight.getDestinationId()),
                 flight
