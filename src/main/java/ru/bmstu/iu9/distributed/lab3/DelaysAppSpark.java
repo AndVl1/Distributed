@@ -49,7 +49,9 @@ public class DelaysAppSpark {
                     double cancelledFlightsPercent = (double) cancelledFlights / (double) i * 100;
                     return new Tuple2<>(maxDelay, delayedFlightsPercent + cancelledFlightsPercent);
                 })
-                .map();
+                .map(data -> {
+                    
+                });
 
     }
 }
