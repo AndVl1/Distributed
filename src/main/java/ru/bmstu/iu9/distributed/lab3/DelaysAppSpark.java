@@ -40,8 +40,9 @@ public class DelaysAppSpark {
                         FlightData currentFlight = flightsIterator.next();
                         if (currentFlight.isCancelled()) {
                             cancelledFlights++;
-                        } else if (currentFlight.getDelay() > 0) {
-
+                        } else if (currentFlight.isDelayed()) {
+                            maxDelay = Math.max(maxDelay, currentFlight.getDelay());
+                            flightsWithDelay++;
                         }
                     }
                 })

@@ -49,6 +49,10 @@ public class FlightData implements Serializable {
         return delay;
     }
 
+    public boolean isDelayed() {
+        return delay > 0;
+    }
+
     private final static int CANCELLED = 1;
     private final static int NOT_CANCELLED = 0;
 }
