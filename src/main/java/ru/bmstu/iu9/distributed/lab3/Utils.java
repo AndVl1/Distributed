@@ -31,14 +31,8 @@ public class Utils {
 
     public static JavaPairRDD<String, AirportData> getAirportsPairRdd(JavaRDD<String> airports){
         return airports.map(line -> {
-            int firstComma = line.indexOf(CSV_DELIMITER);
-
             AirportHelper codeAndName = AirportHelper.trimCodeAndName(line, CSV_DELIMITER);
-            String codeString = removeSpecSymbols(
-                    line.substring(0, firstComma)
-            );
-            String description = line.substring(firstComma + 1).replaceAll(CSV_STRING_SYMBOL, "");
-            return new String[]{codeString, description};
+            return new String[]{Integer.toString(codeAndName.getCode()), codeAndName.getDescription()};
         }).mapToPair(airportData -> {
             String id = airportData[0];
             String description = airportData[1];
