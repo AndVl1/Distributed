@@ -45,7 +45,7 @@ public class DelaysAppSpark {
                             delayedFlights++;
                         }
                     }
-                    double lateFlights = 
+                    
                 })
                 .map();
 
