@@ -21,14 +21,15 @@ public class DelaysAppSpark {
         JavaRDD<String> rawFlights = Utils.getRddData(sc.textFile(FLIGHTS_FILE_PATH));
 
         JavaPairRDD<String, AirportData> airportsPairRdd = Utils.getAirportsPairRdd(rawAirport);
-        JavaPairRDD<Tuple2<String, String>, FlightData> flights = Utils.getFlightsId(
+        JavaPairRDD<Tuple2<String, String>, FlightData> flightsRdd = Utils.getFlightsId(
                 Utils.getFlightsRdd(rawFlights)
         );
 
         final Broadcast<Map<String, AirportData>> airportBroadcasted = sc.broadcast(airportsPairRdd.collectAsMap());
 
-        flights.groupByKey()
-                .mapValues(flight -> {});
+        flightsRdd.groupByKey()
+                .mapValues(flight -> {})
+                .map();
 
     }
 }
