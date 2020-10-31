@@ -3,6 +3,7 @@ package ru.bmstu.iu9.distributed.lab3;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 
+import static ru.bmstu.iu9.distributed.StringUtils.CSV_STRING_SYMBOL;
 import static ru.bmstu.iu9.distributed.StringUtils.removeSpecSymbols;
 
 public class Utils {
@@ -35,14 +36,14 @@ public class Utils {
 
     private static JavaRDD<String[]> splitAirportCsvLine(String line){
         int firstComma = line.indexOf(CSV_DELIMITER);
-        int code;
 
         String codeString = removeSpecSymbols(
                 line.substring(0, firstComma)
         );
-        code = Integer.parseInt(codeString);
-
         String description = line.substring(firstComma + 1).replaceAll(CSV_STRING_SYMBOL, "");
+
+        String[] codeAndName = {codeString, description};
+        return JavaRDD.toRDD(codeAndName);
     }
 
     private static double getDelay(String delay) {
