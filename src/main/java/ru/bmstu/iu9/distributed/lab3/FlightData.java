@@ -6,6 +6,8 @@ public class FlightData implements Serializable {
     private final String originId;
     private final String destinationId;
     private final int isCancelled;
+    private final double delay;
+
 
     @Override
     public String toString() {
@@ -16,8 +18,6 @@ public class FlightData implements Serializable {
                 ", delay=" + delay +
                 '}';
     }
-
-    private final double delay;
 
     public FlightData(String originId, String destinationId, double delay) {
         this.originId = originId;
