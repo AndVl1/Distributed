@@ -35,7 +35,7 @@ public class DelaysAppSpark {
                     double maxDelay = 0;
                     int delayedFlights = 0;
                     int cancelledFlights = 0;
-                    int flightsCount = 0;
+                    int flightsCount  = 0;
                     while (flightsIterator.hasNext()) {
                         flightsCount++;
                         FlightData currentFlight = flightsIterator.next();
