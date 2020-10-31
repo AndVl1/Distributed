@@ -37,8 +37,9 @@ public class CsvUtils {
     }
 
     // соответствие между аэропортами отправления/прибытия и информацией о полёте
-    // flights
-    public static JavaPairRDD<Tuple2<String, String>, FlightData> getFlightsPairRdd(JavaRDD<FlightData> flights){
+    // correspondence of flights destination and origin id to flight rdd
+    // FlightsIdsToRdd
+    public static JavaPairRDD<Tuple2<String, String>, FlightData> getFlightsIdsToRddAccordance(JavaRDD<FlightData> flights){
         return flights.mapToPair(flight -> new Tuple2<>(
                 new Tuple2<>(flight.getOriginId(), flight.getDestinationId()),
                 flight
