@@ -31,16 +31,15 @@ public class AirportHelper {
         return getAirportHelper(line, line.indexOf(delimiter));
     }
 
-    private static AirportHelper getAirportHelper(String line, int i) {
-        int firstComma = i;
+    private static AirportHelper getAirportHelper(String line, int firstIndexOfDelimiter) {
         int code;
 
         String codeString = removeSpecSymbols(
-                line.substring(0, firstComma)
+                line.substring(0, firstIndexOfDelimiter)
         );
         code = Integer.parseInt(codeString);
 
-        String description = removeSpecSymbols(line.substring(firstComma + 1));
+        String description = removeSpecSymbols(line.substring(firstIndexOfDelimiter + 1));
 
         AirportHelper result = new AirportHelper();
         result.setCode(code);
