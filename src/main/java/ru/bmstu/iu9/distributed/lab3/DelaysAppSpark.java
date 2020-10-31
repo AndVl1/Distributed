@@ -35,9 +35,9 @@ public class DelaysAppSpark {
                     double maxDelay = 0;
                     int delayedFlights = 0;
                     int cancelledFlights = 0;
-                    int i = 0;
+                    int flightsCount = 0;
                     while (flightsIterator.hasNext()) {
-                        i++;
+                        flightsCount++;
                         FlightData currentFlight = flightsIterator.next();
                         if (currentFlight.isCancelled()) {
                             cancelledFlights++;
@@ -46,8 +46,8 @@ public class DelaysAppSpark {
                             delayedFlights++;
                         }
                     }
-                    double delayedFlightsPercent = (double) delayedFlights / (double) i * 100;
-                    double cancelledFlightsPercent = (double) cancelledFlights / (double) i * 100;
+                    double delayedFlightsPercent = (double) delayedFlights / (double) flightsCount * 100;
+                    double cancelledFlightsPercent = (double) cancelledFlights / (double) flightsCount * 100;
                     return new Tuple2<>(maxDelay, delayedFlightsPercent + cancelledFlightsPercent);
                 })
                 .map(data -> {
