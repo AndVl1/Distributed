@@ -19,12 +19,12 @@ public class DelaysAppSpark {
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("Delays");
         JavaSparkContext sc = new JavaSparkContext(conf);
-        JavaRDD<String> rawAirport = Utils.getRddData(sc.textFile(AIRPORTS_FILE_PATH));
-        JavaRDD<String> rawFlights = Utils.getRddData(sc.textFile(FLIGHTS_FILE_PATH));
+        JavaRDD<String> rawAirport = CsvUtils.getRddData(sc.textFile(AIRPORTS_FILE_PATH));
+        JavaRDD<String> rawFlights = CsvUtils.getRddData(sc.textFile(FLIGHTS_FILE_PATH));
 
-        JavaPairRDD<String, AirportData> airportsPairRdd = Utils.getAirportsPairRdd(rawAirport);
-        JavaPairRDD<Tuple2<String, String>, FlightData> flightsRdd = Utils.getFlightsId(
-                Utils.getFlightsRdd(rawFlights)
+        JavaPairRDD<String, AirportData> airportsPairRdd = CsvUtils.getAirportsPairRdd(rawAirport);
+        JavaPairRDD<Tuple2<String, String>, FlightData> flightsRdd = CsvUtils.getFlightsId(
+                CsvUtils.getFlightsRdd(rawFlights)
         );
 
         final Broadcast<Map<String, AirportData>> airportBroadcasted = sc.broadcast(airportsPairRdd.collectAsMap());

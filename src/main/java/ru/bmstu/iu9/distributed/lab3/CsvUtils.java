@@ -5,7 +5,7 @@ import org.apache.spark.api.java.JavaRDD;
 import ru.bmstu.iu9.distributed.AirportHelper;
 import scala.Tuple2;
 
-public class Utils {
+public class CsvUtils {
     public static JavaRDD<String> getRddData(JavaRDD<String> data) {
         return removeCsvTitleString(data);
     }
