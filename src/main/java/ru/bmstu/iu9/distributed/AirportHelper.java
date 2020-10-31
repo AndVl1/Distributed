@@ -24,7 +24,15 @@ public class AirportHelper {
     }
 
     public static AirportHelper trimCodeAndName(String line, char delimiter) {
-        int firstComma = line.indexOf(delimiter);
+        return getAirportHelper(line, line.indexOf(delimiter));
+    }
+
+    public static AirportHelper trimCodeAndName(String line, String delimiter) {
+        return getAirportHelper(line, line.indexOf(delimiter));
+    }
+
+    private static AirportHelper getAirportHelper(String line, int i) {
+        int firstComma = i;
         int code;
 
         String codeString = removeSpecSymbols(

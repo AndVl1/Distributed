@@ -2,6 +2,7 @@ package ru.bmstu.iu9.distributed.lab3;
 
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
+import ru.bmstu.iu9.distributed.AirportHelper;
 import scala.Tuple2;
 
 import static ru.bmstu.iu9.distributed.StringUtils.CSV_STRING_SYMBOL;
@@ -32,6 +33,7 @@ public class Utils {
         return airports.map(line -> {
             int firstComma = line.indexOf(CSV_DELIMITER);
 
+            AirportHelper codeAndName = AirportHelper.trimCodeAndName(line, CSV_DELIMITER);
             String codeString = removeSpecSymbols(
                     line.substring(0, firstComma)
             );
