@@ -10,21 +10,21 @@ public class StringUtils {
     }
 
     // Trim csv ***, "name"; where *** is integer code
-//    public static AirportHelper trimCodeAndName(String line, char delimiter) {
-//        int firstComma = line.indexOf(delimiter);
-//        int code;
-//
-//        String codeString = removeSpecSymbols(
-//                line.substring(0, firstComma)
-//        );
-//        code = Integer.parseInt(codeString);
-//
-//        String description = line.substring(firstComma + 1).replaceAll(CSV_STRING_SYMBOL, "");
-//        AirportHelper result = new AirportHelper();
-//        result.setCode(code);
-//        result.setDescription(description);
-//        return result;
-//    }
+    public static AirportHelper trimCodeAndName(String line, char delimiter) {
+        int firstComma = line.indexOf(delimiter);
+        int code;
+
+        String codeString = removeSpecSymbols(
+                line.substring(0, firstComma)
+        );
+        code = Integer.parseInt(codeString);
+
+        String description = line.substring(firstComma + 1).replaceAll(CSV_STRING_SYMBOL, "");
+        AirportHelper result = new AirportHelper();
+        result.setCode(code);
+        result.setDescription(description);
+        return result;
+    }
 
     public static String removeSpecSymbols(String line){
         return line.replaceAll(SPEC_SYMBOLS, "");

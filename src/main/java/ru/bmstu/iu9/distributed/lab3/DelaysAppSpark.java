@@ -1,6 +1,7 @@
 package ru.bmstu.iu9.distributed.lab3;
 
 import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 
@@ -15,7 +16,9 @@ public class DelaysAppSpark {
         JavaRDD<String> rawAirport = Utils.getRddData(sc.textFile(AIRPORTS_FILE_PATH));
         JavaRDD<String> rawFlights = Utils.getRddData(sc.textFile(FLIGHTS_FILE_PATH));
 
+        JavaRDD<FlightData> flightsRdd = Utils.getFlightsRdd(rawFlights);
 
+//        JavaPairRDD<String, AirportData> airportsPairRdd =
 
         final String line = rawAirport.first();
         rawAirport = rawFlights.filter(s -> !s.equals(line));
