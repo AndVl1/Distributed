@@ -50,7 +50,7 @@ public class DelaysAppSpark {
                     return new Tuple2<>(maxDelay, delayedFlightsPercent + cancelledFlightsPercent);
                 })
                 .map(data -> {
-                    
+                    AirportData originAirport = 
                 });
 
     }
