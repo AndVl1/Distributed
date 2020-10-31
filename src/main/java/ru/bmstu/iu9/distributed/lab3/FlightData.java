@@ -1,2 +1,4 @@
-package ru.bmstu.iu9.distributed.lab3;public class FlightData {
+package ru.bmstu.iu9.distributed.lab3;
+
+public class FlightData {
 }

@@ -16,7 +16,7 @@ public class DelaysAppSpark {
         JavaRDD<String> rawAirport = CsvUtils.getRddData(sc.textFile(AIRPORTS_FILE_PATH));
         JavaRDD<String> rawFlights = CsvUtils.getRddData(sc.textFile(FLIGHTS_FILE_PATH));
 
-        
+
 
         final String line = rawAirport.first();
         rawAirport = rawFlights.filter(s -> !s.equals(line));
