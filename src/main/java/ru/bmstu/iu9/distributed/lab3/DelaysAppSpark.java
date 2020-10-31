@@ -18,10 +18,10 @@ public class DelaysAppSpark {
 
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("Delays");
-        JavaSparkContext sc = new JavaSparkContext(conf);
+        JavaSparkContext sparkContext = new JavaSparkContext(conf);
         // убираю заголовки (названия колонок)
-        JavaRDD<String> rawAirport = CsvUtils.getRddData(sc.textFile(AIRPORTS_FILE_PATH));
-        JavaRDD<String> rawFlights = CsvUtils.getRddData(sc.textFile(FLIGHTS_FILE_PATH));
+        JavaRDD<String> rawAirport = CsvUtils.getRddData(sparkContext.textFile(AIRPORTS_FILE_PATH));
+        JavaRDD<String> rawFlights = CsvUtils.getRddData(sparkContext.textFile(FLIGHTS_FILE_PATH));
 
         // пара (airportId | data)
         JavaPairRDD<String, AirportData> airportsPairRdd = CsvUtils.getAirportsPairRdd(rawAirport);
@@ -30,7 +30,7 @@ public class DelaysAppSpark {
         // accordance of (flights origin and destination ids) to (flight data)
         JavaPairRDD<Tuple2<String, String>, FlightData> flightIdsToDataAccordance = CsvUtils.getFlightIdsToDataAccordance(flightsRdd1);
 
-        final Broadcast<Map<String, AirportData>> airportBroadcasted = sc.broadcast(airportsPairRdd.collectAsMap());
+        final Broadcast<Map<String, AirportData>> airportBroadcasted = sparkContext.broadcast(airportsPairRdd.collectAsMap());
 
         flightIdsToDataAccordance.groupByKey()
                 .mapValues(flight -> {
