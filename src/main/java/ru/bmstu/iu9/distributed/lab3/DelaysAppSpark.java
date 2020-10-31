@@ -32,7 +32,7 @@ public class DelaysAppSpark {
                 .mapValues(flight -> {
                     Iterator<FlightData> flightsIterator = flight.iterator();
                     double maxDelay = 0;
-                    int flightsWithDelay = 0;
+                    int delayedFlights = 0;
                     int cancelledFlights = 0;
                     int i = 0;
                     while (flightsIterator.hasNext()) {
@@ -42,7 +42,7 @@ public class DelaysAppSpark {
                             cancelledFlights++;
                         } else if (currentFlight.isDelayed()) {
                             maxDelay = Math.max(maxDelay, currentFlight.getDelay());
-                            flightsWithDelay++;
+                            delayedFlights++;
                         }
                     }
                 })
