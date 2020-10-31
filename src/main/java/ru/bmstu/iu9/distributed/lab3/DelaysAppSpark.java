@@ -7,6 +7,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.broadcast.Broadcast;
 import scala.Tuple2;
 
+import java.util.Iterator;
 import java.util.Map;
 
 public class DelaysAppSpark {
@@ -28,7 +29,9 @@ public class DelaysAppSpark {
         final Broadcast<Map<String, AirportData>> airportBroadcasted = sc.broadcast(airportsPairRdd.collectAsMap());
 
         flightsRdd.groupByKey()
-                .mapValues(flight -> {})
+                .mapValues(flight -> {
+                    Iterator flights
+                })
                 .map();
 
     }
