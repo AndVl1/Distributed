@@ -30,7 +30,7 @@ public class FlightData implements Serializable {
         this.originId = originId;
         this.destinationId = destinationId;
         this.delay = 0;
-        isCancelled = NOT_CANCELLED;
+        isCancelled = CANCELLED;
     }
 
     public String getOriginId() {
