@@ -30,7 +30,8 @@ public class DelaysAppSpark {
 
         flightsRdd.groupByKey()
                 .mapValues(flight -> {
-                    Iterator flights
+                    Iterator flightsIterator = flight.iterator();
+                    
                 })
                 .map();
 
