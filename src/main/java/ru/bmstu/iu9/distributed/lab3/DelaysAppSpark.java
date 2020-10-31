@@ -18,7 +18,7 @@ public class DelaysAppSpark {
 
         JavaRDD<FlightData> flightsRdd = Utils.getFlightsRdd(rawFlights);
 
-//        JavaPairRDD<String, AirportData> airportsPairRdd =
+        JavaPairRDD<String, AirportData> airportsPairRdd = Utils.getAirportsPairRdd(rawAirport);
 
         final String line = rawAirport.first();
         rawAirport = rawFlights.filter(s -> !s.equals(line));

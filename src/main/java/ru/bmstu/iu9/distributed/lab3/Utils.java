@@ -2,6 +2,7 @@ package ru.bmstu.iu9.distributed.lab3;
 
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
+import scala.Tuple2;
 
 import static ru.bmstu.iu9.distributed.StringUtils.CSV_STRING_SYMBOL;
 import static ru.bmstu.iu9.distributed.StringUtils.removeSpecSymbols;
@@ -28,23 +29,36 @@ public class Utils {
     }
 
     public static JavaPairRDD<String, AirportData> getAirportsPairRdd(JavaRDD<String> airports){
-        return airports.map(line -> line.split(CSV_DELIMITER))
-                .mapToPair(airportData -> {
+        return airports.map(line -> {
+            int firstComma = line.indexOf(CSV_DELIMITER);
 
-                })
+            String codeString = removeSpecSymbols(
+                    line.substring(0, firstComma)
+            );
+            String description = line.substring(firstComma + 1).replaceAll(CSV_STRING_SYMBOL, "");
+            return new String[]{codeString, description};
+        }).mapToPair(airportData -> {
+            String id = airportData[0];
+            String description = airportData[1];
+            return new Tuple2<>(id, new AirportData(Integer.parseInt(id), description));
+        });
     }
 
-    private static JavaRDD<String[]> splitAirportCsvLine(String line){
-        int firstComma = line.indexOf(CSV_DELIMITER);
-
-        String codeString = removeSpecSymbols(
-                line.substring(0, firstComma)
-        );
-        String description = line.substring(firstComma + 1).replaceAll(CSV_STRING_SYMBOL, "");
-
-        String[] codeAndName = {codeString, description};
-        return JavaRDD.toRDD(codeAndName);
+    public static JavaPairRDD<Tuple2<String, String>, FlightData> getFlightsId(JavaRDD<FlightData> flights){
+        return flights.mapToPair(flight -> new Tuple2<>(new Tuple2<>(flight.getOriginId(), flight.getDestinationId()), flight))
     }
+
+//    private static JavaRDD<String[]> splitAirportCsvLine(String line){
+//        int firstComma = line.indexOf(CSV_DELIMITER);
+//
+//        String codeString = removeSpecSymbols(
+//                line.substring(0, firstComma)
+//        );
+//        String description = line.substring(firstComma + 1).replaceAll(CSV_STRING_SYMBOL, "");
+//
+//        String[] codeAndName = {codeString, description};
+//        return JavaRDD.toRDD(codeAndName);
+//    }
 
     private static double getDelay(String delay) {
         return delay.isEmpty() ? NO_DELAY_TIME : Double.parseDouble(delay);
