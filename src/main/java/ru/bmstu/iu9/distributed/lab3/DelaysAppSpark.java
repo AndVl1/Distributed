@@ -3,7 +3,6 @@ package ru.bmstu.iu9.distributed.lab3;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-import ru.bmstu.iu9.distributed.CsvUtils;
 
 public class DelaysAppSpark {
 
@@ -13,8 +12,8 @@ public class DelaysAppSpark {
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("Delays");
         JavaSparkContext sc = new JavaSparkContext(conf);
-        JavaRDD<String> rawAirport = CsvUtils.getRddData(sc.textFile(AIRPORTS_FILE_PATH));
-        JavaRDD<String> rawFlights = CsvUtils.getRddData(sc.textFile(FLIGHTS_FILE_PATH));
+        JavaRDD<String> rawAirport = Utils.getRddData(sc.textFile(AIRPORTS_FILE_PATH));
+        JavaRDD<String> rawFlights = Utils.getRddData(sc.textFile(FLIGHTS_FILE_PATH));
 
 
 

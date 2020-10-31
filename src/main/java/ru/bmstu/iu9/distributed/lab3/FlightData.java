@@ -6,6 +6,17 @@ public class FlightData implements Serializable {
     private final String originId;
     private final String destinationId;
     private final int isCancelled;
+
+    @Override
+    public String toString() {
+        return "FlightData{" +
+                "originId='" + originId + '\'' +
+                ", destinationId='" + destinationId + '\'' +
+                ", isCancelled=" + isCancelled +
+                ", delay=" + delay +
+                '}';
+    }
+
     private final double delay;
 
     public FlightData(String originId, String destinationId, double delay) {
