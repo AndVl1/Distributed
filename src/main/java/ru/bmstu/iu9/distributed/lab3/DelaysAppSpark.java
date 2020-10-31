@@ -25,7 +25,7 @@ public class DelaysAppSpark {
                 Utils.getFlightsRdd(rawFlights)
         );
 
-        final Broadcast<Map<String, AirportData>> broadcast = sc.broadcast(airportsPairRdd.collectAsMap());
+        final Broadcast<Map<String, AirportData>> airportBroadcasted = sc.broadcast(airportsPairRdd.collectAsMap());
 
         flights.groupByKey()
                 .mapValues(flight -> {});
