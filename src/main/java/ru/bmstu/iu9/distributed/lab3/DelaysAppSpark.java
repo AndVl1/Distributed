@@ -38,7 +38,9 @@ public class DelaysAppSpark {
                     while (flightsIterator.hasNext()) {
                         i++;
                         FlightData currentFlight = flightsIterator.next();
-                        if (currentFlight.getIsCancelled())
+                        if (currentFlight.isCancelled()) {
+                            
+                        }
 
                     }
                 })

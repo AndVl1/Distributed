@@ -41,7 +41,7 @@ public class FlightData implements Serializable {
         return destinationId;
     }
 
-    public boolean getIsCancelled() {
+    public boolean isCancelled() {
         return isCancelled == CANCELLED;
     }
 
