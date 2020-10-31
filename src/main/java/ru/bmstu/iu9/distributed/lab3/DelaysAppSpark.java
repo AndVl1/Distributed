@@ -31,6 +31,7 @@ public class DelaysAppSpark {
         flightsRdd.groupByKey()
                 .mapValues(flight -> {
                     Iterator<FlightData> flightsIterator = flight.iterator();
+                    double maxDelay = 0;
                     
                 })
                 .map();
