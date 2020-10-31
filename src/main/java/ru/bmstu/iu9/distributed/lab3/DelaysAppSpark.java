@@ -34,6 +34,7 @@ public class DelaysAppSpark {
                     double maxDelay = 0;
                     int flightsWithDelay = 0;
                     int cancelledFlights = 0;
+                    int i = 0;
                     
                 })
                 .map();
