@@ -25,7 +25,7 @@ public class DelaysAppSpark {
 
         // пара (airportId | data)
         JavaPairRDD<String, AirportData> airportsPairRdd = CsvUtils.getAirportsPairRdd(rawAirport);
-        // информация о полёте/
+        // информация о полёте
         JavaRDD<FlightData> flightsRdd = CsvUtils.getFlightsRdd(rawFlights);
         // accordance of (flights origin and destination ids) to (flight data)
         JavaPairRDD<Tuple2<String, String>, FlightData> flightIdsToDataAccordance = CsvUtils.getFlightIdsToDataAccordance(flightsRdd);
