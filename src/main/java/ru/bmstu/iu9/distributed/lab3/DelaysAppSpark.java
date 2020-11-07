@@ -5,6 +5,7 @@ import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.broadcast.Broadcast;
+import org.apache.spark.util.LongAccumulator;
 import scala.Tuple2;
 
 import java.util.Iterator;
@@ -33,7 +34,7 @@ public class DelaysAppSpark {
 
         final Broadcast<Map<String, AirportData>> airportBroadcast = sparkContext.broadcast(airportsPairRdd.collectAsMap());
 
-        final 
+        final LongAccumulator
 
         flightIdsToDataAccordance.reduceByKey((a, b) -> {
 
