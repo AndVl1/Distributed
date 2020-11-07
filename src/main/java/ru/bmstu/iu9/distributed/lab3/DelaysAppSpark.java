@@ -34,8 +34,8 @@ public class DelaysAppSpark {
         final Broadcast<Map<String, AirportData>> airportBroadcast = sparkContext.broadcast(airportsPairRdd.collectAsMap());
 
         flightIdsToDataAccordance.groupByKey()
-                .mapValues(flight -> {
-                    Iterator<FlightData> flightsIterator = flight.iterator();
+                .mapValues(flights -> {
+                    Iterator<FlightData> flightsIterator = flights.iterator();
                     double maxDelay = 0;
                     int delayedFlights = 0;
                     int cancelledFlights = 0;
