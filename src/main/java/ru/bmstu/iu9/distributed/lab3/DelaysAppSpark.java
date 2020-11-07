@@ -33,13 +33,12 @@ public class DelaysAppSpark {
 
         final Broadcast<Map<String, AirportData>> airportBroadcast = sparkContext.broadcast(airportsPairRdd.collectAsMap());
 
-        flightIdsToDataAccordance.reduceByKey((a) -> {
-            
-        }).map(data -> {
+        flightIdsToDataAccordance.map(data -> {
             AirportData originAirport = airportBroadcast.getValue().get(data._1()._1());
             AirportData destinationAirport = airportBroadcast.getValue().get(data._1()._2());
             return new Tuple2<>(new Tuple2<>(originAirport, destinationAirport), data._2());
-        }).saveAsTextFile(OUTPUT_PATH);
+        })
+                .saveAsTextFile(OUTPUT_PATH);
 
         flightIdsToDataAccordance.groupByKey()
                 .mapValues(flights -> {
