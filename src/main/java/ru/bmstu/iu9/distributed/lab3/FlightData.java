@@ -9,6 +9,7 @@ public class FlightData implements Serializable {
     private final double delay;
 
 
+
     @Override
     public String toString() {
         return "FlightData{" +
