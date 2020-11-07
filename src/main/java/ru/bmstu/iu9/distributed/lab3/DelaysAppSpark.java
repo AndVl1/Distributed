@@ -38,7 +38,7 @@ public class DelaysAppSpark {
 
         flightIdsToDataAccordance.reduceByKey((a, b) -> {
             total.add(1);
-            return a +b;
+            return a.getDelay() + b.getDelay();
         }).mapValues(flights -> {
             Iterator<FlightData> flightsIterator = flights.iterator();
             double maxDelay = 0;
