@@ -27,10 +27,11 @@ public class DelaysAppSpark {
         JavaPairRDD<String, AirportData> airportsPairRdd = CsvUtils.getAirportsPairRdd(rawAirport);
         // информация о полёте
         JavaRDD<FlightData> flightsRdd = CsvUtils.getFlightsRdd(rawFlights);
-        // accordance of (flights origin and destination ids) to (flight data)
+        // (flights origin and destination ids) - (flight data)
         JavaPairRDD<Tuple2<String, String>, FlightData> flightIdsToDataAccordance = CsvUtils.getFlightIdsToDataAccordance(flightsRdd);
+        // data._1.**
 
-        final Broadcast<Map<String, AirportData>> airportBroadcasted = sparkContext.broadcast(airportsPairRdd.collectAsMap());
+        final Broadcast<Map<String, AirportData>> airportBroadcast = sparkContext.broadcast(airportsPairRdd.collectAsMap());
 
         flightIdsToDataAccordance.groupByKey()
                 .mapValues(flight -> {
@@ -51,11 +52,11 @@ public class DelaysAppSpark {
                     }
                     double delayedFlightsPercent = (double) delayedFlights / (double) flightsCount * 100;
                     double cancelledFlightsPercent = (double) cancelledFlights / (double) flightsCount * 100;
-                    return new Tuple2<>(maxDelay, delayedFlightsPercent + cancelledFlightsPercent);
+                    return new Tuple2<>(maxDelay, delayedFlightsPercent + cancelledFlightsPercent); // data._2
                 })
                 .map(data -> {
-                    AirportData originAirport = airportBroadcasted.getValue().get(data._1()._1());
-                    AirportData destinationAirport = airportBroadcasted.getValue().get(data._1()._2());
+                    AirportData originAirport = airportBroadcast.getValue().get(data._1()._1());
+                    AirportData destinationAirport = airportBroadcast.getValue().get(data._1()._2());
                     return new Tuple2<>(new Tuple2<>(originAirport, destinationAirport), data._2());
                 }).saveAsTextFile(OUTPUT_PATH);
     }
