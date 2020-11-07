@@ -33,27 +33,28 @@ public class DelaysAppSpark {
 
         final Broadcast<Map<String, AirportData>> airportBroadcast = sparkContext.broadcast(airportsPairRdd.collectAsMap());
 
-        flightIdsToDataAccordance.groupByKey()
-                .mapValues(flights -> {
-                    Iterator<FlightData> flightsIterator = flights.iterator();
-                    double maxDelay = 0;
-                    int delayedFlights = 0;
-                    int cancelledFlights = 0;
-                    int flightsCount = 0;
-                    while (flightsIterator.hasNext()) {
-                        flightsCount++;
-                        FlightData currentFlight = flightsIterator.next();
-                        if (currentFlight.isCancelled()) {
-                            cancelledFlights++;
-                        } else if (currentFlight.isDelayed()) {
-                            maxDelay = Math.max(maxDelay, currentFlight.getDelay());
-                            delayedFlights++;
-                        }
-                    }
-                    double delayedFlightsPercent = (double) delayedFlights / (double) flightsCount * 100;
-                    double cancelledFlightsPercent = (double) cancelledFlights / (double) flightsCount * 100;
-                    return new Tuple2<>(maxDelay, delayedFlightsPercent + cancelledFlightsPercent); // data._2
-                }).map(data -> {
+        flightIdsToDataAccordance.reduceByKey(flights -> {
+
+        }).mapValues(flights -> {
+            Iterator<FlightData> flightsIterator = flights.iterator();
+            double maxDelay = 0;
+            int delayedFlights = 0;
+            int cancelledFlights = 0;
+            int flightsCount = 0;
+            while (flightsIterator.hasNext()) {
+                flightsCount++;
+                FlightData currentFlight = flightsIterator.next();
+                if (currentFlight.isCancelled()) {
+                    cancelledFlights++;
+                } else if (currentFlight.isDelayed()) {
+                    maxDelay = Math.max(maxDelay, currentFlight.getDelay());
+                    delayedFlights++;
+                }
+            }
+            double delayedFlightsPercent = (double) delayedFlights / (double) flightsCount * 100;
+            double cancelledFlightsPercent = (double) cancelledFlights / (double) flightsCount * 100;
+            return new Tuple2<>(maxDelay, delayedFlightsPercent + cancelledFlightsPercent); // data._2
+        }).map(data -> {
             AirportData originAirport = airportBroadcast.getValue().get(data._1()._1());
             AirportData destinationAirport = airportBroadcast.getValue().get(data._1()._2());
             return new Tuple2<>(new Tuple2<>(originAirport, destinationAirport), data._2());
@@ -80,9 +81,9 @@ public class DelaysAppSpark {
                     double cancelledFlightsPercent = (double) cancelledFlights / (double) flightsCount * 100;
                     return new Tuple2<>(maxDelay, delayedFlightsPercent + cancelledFlightsPercent); // data._2
                 }).map(data -> {
-                    AirportData originAirport = airportBroadcast.getValue().get(data._1()._1());
-                    AirportData destinationAirport = airportBroadcast.getValue().get(data._1()._2());
-                    return new Tuple2<>(new Tuple2<>(originAirport, destinationAirport), data._2());
-                }).saveAsTextFile(OUTPUT_PATH);
+            AirportData originAirport = airportBroadcast.getValue().get(data._1()._1());
+            AirportData destinationAirport = airportBroadcast.getValue().get(data._1()._2());
+            return new Tuple2<>(new Tuple2<>(originAirport, destinationAirport), data._2());
+        }).saveAsTextFile(OUTPUT_PATH);
     }
 }
