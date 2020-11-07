@@ -53,8 +53,7 @@ public class DelaysAppSpark {
                     double delayedFlightsPercent = (double) delayedFlights / (double) flightsCount * 100;
                     double cancelledFlightsPercent = (double) cancelledFlights / (double) flightsCount * 100;
                     return new Tuple2<>(maxDelay, delayedFlightsPercent + cancelledFlightsPercent); // data._2
-                })
-                .map(data -> {
+                }).map(data -> {
                     AirportData originAirport = airportBroadcast.getValue().get(data._1()._1());
                     AirportData destinationAirport = airportBroadcast.getValue().get(data._1()._2());
                     return new Tuple2<>(new Tuple2<>(originAirport, destinationAirport), data._2());
