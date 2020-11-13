@@ -37,10 +37,12 @@ public class DelaysAppSpark {
         final LongAccumulator total = sparkContext.sc().longAccumulator();
 
         flightIdsToDataAccordance.reduceByKey((a, b) -> {
-            total.add(1);
-            return a.getDelay() + b.getDelay();
+            double newDelay = 0;
+
+
+            return new FlightData(a.getOriginId(), a.getDestinationId(), newDelay);
         }).mapValues(flights -> {
-            Iterator<FlightData> flightsIterator = flights.iterator();
+            Iterator<FlightData> flightsIterator = flights.iterator(); // old
             double maxDelay = 0;
             int delayedFlights = 0;
             int cancelledFlights = 0;
