@@ -38,8 +38,6 @@ public class DelaysAppSpark {
 
         flightIdsToDataAccordance.reduceByKey((a, b) -> {
             double newDelay = 0;
-
-
             return new FlightData(a.getOriginId(), a.getDestinationId(), newDelay);
         }).mapValues(flights -> {
             Iterator<FlightData> flightsIterator = flights.iterator(); // old
