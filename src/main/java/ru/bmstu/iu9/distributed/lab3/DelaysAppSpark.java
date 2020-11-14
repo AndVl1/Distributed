@@ -37,7 +37,7 @@ public class DelaysAppSpark {
         final LongAccumulator total = sparkContext.sc().longAccumulator();
 
         flightIdsToDataAccordance.reduceByKey((a, b) -> {
-            double newDelay = 0;
+            double newDelay = 0d;
             return new FlightData(a.getOriginId(), a.getDestinationId(), newDelay);
         }).mapValues(flights -> {
             Iterator<FlightData> flightsIterator = flights.iterator(); // old
@@ -89,5 +89,17 @@ public class DelaysAppSpark {
             AirportData destinationAirport = airportBroadcast.getValue().get(data._1()._2());
             return new Tuple2<>(new Tuple2<>(originAirport, destinationAirport), data._2());
         }).saveAsTextFile(OUTPUT_PATH);
+    }
+
+    private FlightData getAccumulatedData(FlightData a, FlightData b) {
+        double newDelay = 0d;
+        if (a.isDelayed() && b.isDelayed()) {
+            newDelay = Math.min(a.getDelay(), b.getDelay());
+        } else if (a.isDelayed() && !b.isDelayed()){
+            newDelay = a.getDelay();
+        } else if(!a.isDelayed() && b.isDelayed()){
+            newDelay = b.getDelay();
+        }
+
     }
 }

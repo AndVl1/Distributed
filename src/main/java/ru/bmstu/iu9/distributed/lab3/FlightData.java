@@ -8,7 +8,9 @@ public class FlightData implements Serializable {
     private final int isCancelled;
     private final double delay;
 
-
+    // for collecting flights
+    private int delayedOrCancelledCount;
+    private int totalCount;
 
     @Override
     public String toString() {
@@ -18,6 +20,20 @@ public class FlightData implements Serializable {
                 ", isCancelled=" + isCancelled +
                 ", delay=" + delay +
                 '}';
+    }
+
+    public FlightData(String originId,
+                      String destinationId,
+                      int isCancelled,
+                      double delay,
+                      int delayedOrCancelledCount,
+                      int totalCount) {
+        this.originId = originId;
+        this.destinationId = destinationId;
+        this.isCancelled = isCancelled;
+        this.delay = delay;
+        this.delayedOrCancelledCount = delayedOrCancelledCount;
+        this.totalCount = totalCount;
     }
 
     public FlightData(String originId, String destinationId, double delay) {
@@ -32,6 +48,14 @@ public class FlightData implements Serializable {
         this.destinationId = destinationId;
         this.delay = 0;
         isCancelled = CANCELLED;
+    }
+
+    public int getDelayedOrCancelledCount() {
+        return delayedOrCancelledCount;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
     }
 
     public String getOriginId() {
