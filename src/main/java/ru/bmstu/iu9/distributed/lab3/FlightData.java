@@ -17,8 +17,6 @@ public class FlightData implements Serializable {
     public String toString() {
         return "FlightData{" +
                 " maxDelay=" + delay +
-                ", bad=" + delayedOrCancelledCount +
-                ", total=" + totalCount +
                 ", delayedOrCancelledPercentage=" + getDelayedOrCancelledPercentage() +
                 '}';
     }
