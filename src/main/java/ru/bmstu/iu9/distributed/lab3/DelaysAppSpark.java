@@ -34,8 +34,6 @@ public class DelaysAppSpark {
 
         final Broadcast<Map<String, AirportData>> airportBroadcast = sparkContext.broadcast(airportsPairRdd.collectAsMap());
 
-        final LongAccumulator total = sparkContext.sc().longAccumulator();
-
         flightIdsToDataAccordance.reduceByKey(DelaysAppSpark::getAccumulatedData)
                 .mapToPair(data -> {
                     AirportData originAirport = airportBroadcast.getValue().get(data._1()._1());
