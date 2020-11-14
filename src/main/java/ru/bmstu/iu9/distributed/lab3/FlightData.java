@@ -6,29 +6,32 @@ public class FlightData implements Serializable {
     private final String originId;
     private final String destinationId;
     private final int isCancelled;
+    // also: maxDelay for collecting
     private final double delay;
 
     // for collecting flights
-    private int delayedOrCancelledCount;
-    private int totalCount;
+    private final int delayedOrCancelledCount;
+    private final int totalCount;
 
     @Override
     public String toString() {
         return "FlightData{" +
                 "originId='" + originId + '\'' +
                 ", destinationId='" + destinationId + '\'' +
-                ", isCancelled=" + isCancelled +
                 ", delay=" + delay +
+                ", delayedOrCancelledPercentage=" + delayedOrCancelledCount / totalCount * 100 +
                 '}';
     }
 
     public FlightData(String originId,
                       String destinationId,
+                      int isCancelled,
                       double delay,
                       int delayedOrCancelledCount,
                       int totalCount) {
         this.originId = originId;
         this.destinationId = destinationId;
+        this.isCancelled = isCancelled;
         this.delay = delay;
         this.delayedOrCancelledCount = delayedOrCancelledCount;
         this.totalCount = totalCount;
@@ -40,6 +43,11 @@ public class FlightData implements Serializable {
         this.delay = delay;
         isCancelled = NOT_DELAYED_OR_CANCELLED;
         totalCount = 1;
+        if (isDelayed()) {
+            delayedOrCancelledCount = DELAYED_OR_CANCELLED;
+        } else {
+            delayedOrCancelledCount = NOT_DELAYED_OR_CANCELLED;
+        }
     }
 
     public FlightData(String originId, String destinationId) {
@@ -48,6 +56,7 @@ public class FlightData implements Serializable {
         this.delay = 0;
         isCancelled = DELAYED_OR_CANCELLED;
         totalCount = 1;
+        delayedOrCancelledCount = DELAYED_OR_CANCELLED;
     }
 
     public int getDelayedOrCancelledCount() {
