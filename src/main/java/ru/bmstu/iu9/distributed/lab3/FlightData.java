@@ -22,7 +22,7 @@ public class FlightData implements Serializable {
                 ", delayedOrCancelledPercentage=" + delayedOrCancelledCount / totalCount * 100 +
                 '}';
     }
-// 
+
     public FlightData(String originId,
                       String destinationId,
                       int isCancelled,
