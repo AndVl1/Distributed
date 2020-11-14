@@ -16,7 +16,7 @@ public class FlightData implements Serializable {
     @Override
     public String toString() {
         return "FlightData{" +
-                ", maxDelay=" + delay +
+                " maxDelay=" + delay +
                 ", delayedOrCancelledPercentage=" + delayedOrCancelledCount / totalCount * 100 +
                 '}';
     }
@@ -33,6 +33,7 @@ public class FlightData implements Serializable {
         this.delay = delay;
         this.delayedOrCancelledCount = delayedOrCancelledCount;
         this.totalCount = totalCount;
+        System.out.println("delayed / total " + delayedOrCancelledCount + " " + totalCount);
     }
 
     public FlightData(String originId, String destinationId, double delay) {
