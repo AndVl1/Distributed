@@ -1,4 +1,4 @@
-# Лабораторные работы по курсу "Создание распределённых и параллельных программ"
+# Лабораторные работы по курсу "Разработка распределённых и параллельных программ"
 
 ## Лабораторная работа 1 (Hadoop)
 [Source code](https://github.com/AndVl1/Distributed/tree/master/src/main/java/ru/bmstu/iu9/distributed/lab1)

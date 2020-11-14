@@ -60,6 +60,10 @@ public class FlightData implements Serializable {
         delayedOrCancelledCount = DELAYED_OR_CANCELLED;
     }
 
+    public double getDelayedOrCancelledPercentage() {
+        return (double) delayedOrCancelledCount / (double) totalCount * 100d;
+    }
+
     public int getDelayedOrCancelledCount() {
         return delayedOrCancelledCount;
     }
