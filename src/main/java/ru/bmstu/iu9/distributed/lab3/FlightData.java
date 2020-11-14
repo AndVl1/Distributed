@@ -19,7 +19,7 @@ public class FlightData implements Serializable {
                 " maxDelay=" + delay +
                 ", bad=" + delayedOrCancelledCount +
                 ", total=" + totalCount +
-                ", delayedOrCancelledPercentage=" + delayedOrCancelledCount / totalCount * 100 +
+                ", delayedOrCancelledPercentage=" + getDelayedOrCancelledPercentage() +
                 '}';
     }
 
