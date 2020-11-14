@@ -10,5 +10,7 @@
 [Source Code](https://github.com/AndVl1/Distributed/tree/master/src/main/java/ru/bmstu/iu9/distributed/lab3) -
  показывал неделю назад, вы сказали переделать на reduceByKey
 
+[Output]()
+
 ## Лабораторная работа 4 (Akka)
 Not yet
