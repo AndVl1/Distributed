@@ -16,9 +16,7 @@ public class FlightData implements Serializable {
     @Override
     public String toString() {
         return "FlightData{" +
-                "originId='" + originId + '\'' +
-                ", destinationId='" + destinationId + '\'' +
-                ", delay=" + delay +
+                ", maxDelay=" + delay +
                 ", delayedOrCancelledPercentage=" + delayedOrCancelledCount / totalCount * 100 +
                 '}';
     }
