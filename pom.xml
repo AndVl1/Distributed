@@ -6,7 +6,15 @@
 
     <groupId>distr</groupId>
     <artifactId>distr</artifactId>
+    <packaging>jar</packaging>
     <version>1</version>
+
+    <properties>
+        <akka.version>2.5.26</akka.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <akka-http.version>10.1.10</akka-http.version>
+    </properties>
 
     <dependencies>
         <dependency>
