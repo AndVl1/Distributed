@@ -18,11 +18,11 @@ public class FlightData implements Serializable {
         return "FlightData{" +
                 " maxDelay=" + delay +
                 ", bad=" + delayedOrCancelledCount +
-                ", total=" + totalCount + 
+                ", total=" + totalCount +
                 ", delayedOrCancelledPercentage=" + delayedOrCancelledCount / totalCount * 100 +
                 '}';
     }
-
+// 
     public FlightData(String originId,
                       String destinationId,
                       int isCancelled,
