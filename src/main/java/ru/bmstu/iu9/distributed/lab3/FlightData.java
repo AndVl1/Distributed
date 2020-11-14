@@ -24,13 +24,11 @@ public class FlightData implements Serializable {
 
     public FlightData(String originId,
                       String destinationId,
-                      int isCancelled,
                       double delay,
                       int delayedOrCancelledCount,
                       int totalCount) {
         this.originId = originId;
         this.destinationId = destinationId;
-        this.isCancelled = isCancelled;
         this.delay = delay;
         this.delayedOrCancelledCount = delayedOrCancelledCount;
         this.totalCount = totalCount;
@@ -40,14 +38,16 @@ public class FlightData implements Serializable {
         this.originId = originId;
         this.destinationId = destinationId;
         this.delay = delay;
-        isCancelled = NOT_CANCELLED;
+        isCancelled = NOT_DELAYED_OR_CANCELLED;
+        totalCount = 1;
     }
 
     public FlightData(String originId, String destinationId) {
         this.originId = originId;
         this.destinationId = destinationId;
         this.delay = 0;
-        isCancelled = CANCELLED;
+        isCancelled = DELAYED_OR_CANCELLED;
+        totalCount = 1;
     }
 
     public int getDelayedOrCancelledCount() {
@@ -67,7 +67,7 @@ public class FlightData implements Serializable {
     }
 
     public boolean isCancelled() {
-        return isCancelled == CANCELLED;
+        return isCancelled == DELAYED_OR_CANCELLED;
     }
 
     public double getDelay() {
@@ -78,6 +78,6 @@ public class FlightData implements Serializable {
         return delay > 0;
     }
 
-    private final static int CANCELLED = 1;
-    private final static int NOT_CANCELLED = 0;
+    private final static int DELAYED_OR_CANCELLED = 1;
+    private final static int NOT_DELAYED_OR_CANCELLED = 0;
 }
