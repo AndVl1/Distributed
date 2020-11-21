@@ -19,6 +19,8 @@ public class MainHttp {
     }
 
     public Route getRoute() {
-        return route()
+        return route(
+                path("")
+        )
     }
 }
