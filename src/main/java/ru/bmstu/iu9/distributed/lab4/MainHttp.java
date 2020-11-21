@@ -28,7 +28,7 @@ public class MainHttp {
                                             body.getPackageId(),
                                             body.getJsString(),
                                             body.getFunctionName(),
-                                            body.getTests()));
+                                            body.getTests()), ActorRef.noSender());
                                 }))))
         )
     }
