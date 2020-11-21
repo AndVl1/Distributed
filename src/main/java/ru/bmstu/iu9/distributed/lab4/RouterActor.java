@@ -4,7 +4,12 @@ import akka.actor.AbstractActor;
 
 public class RouterActor extends AbstractActor {
     @Override
+    public void preStart() {
+
+    }
+
+    @Override
     public Receive createReceive() {
-        return null;
+
     }
 }
