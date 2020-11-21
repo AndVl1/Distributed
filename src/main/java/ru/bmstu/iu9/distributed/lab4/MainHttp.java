@@ -23,7 +23,7 @@ public class MainHttp {
         return route(
                 path("execute", () ->
                         route(post(() ->
-                                entity(Jackson.unmarshaller()))))
+                                entity(Jackson.unmarshaller(TestRequest)))))
         )
     }
 }
