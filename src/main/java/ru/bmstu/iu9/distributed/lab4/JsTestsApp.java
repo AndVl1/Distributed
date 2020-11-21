@@ -14,7 +14,8 @@ public class JsTestsApp {
         ActorSystem system = ActorSystem.create("JsTestsSystem");
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        // instance
+        MainHttp instance = new MainHttp(system);
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
+                instance.
     }
 }
