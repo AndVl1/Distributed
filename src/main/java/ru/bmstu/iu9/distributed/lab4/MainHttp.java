@@ -24,9 +24,11 @@ public class MainHttp {
                 path("execute", () ->
                         route(post(() ->
                                 entity(Jackson.unmarshaller(TestRequest.class), body -> {
-                                    routeActor.tell(TestMessage(
+                                    routeActor.tell(new TestMessage(
                                             body.getPackageId(),
-                                            body.getJsString()));
+                                            body.getJsString(),
+                                            body.getFunctionName(),
+                                            body.getTests()));
                                 }))))
         )
     }
