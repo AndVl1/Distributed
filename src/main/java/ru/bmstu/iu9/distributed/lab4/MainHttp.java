@@ -3,10 +3,10 @@ package ru.bmstu.iu9.distributed.lab4;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.server.Route;
 
-import static akka.http.javadsl.server.Directives.path;
-import static akka.http.javadsl.server.Directives.route;
+import static akka.http.javadsl.server.Directives.*;
 
 // TODO rename
 public class MainHttp {
@@ -21,7 +21,9 @@ public class MainHttp {
 
     public Route getRoute() {
         return route(
-                path("", () -> )
+                path("execute", () ->
+                        route(post(() ->
+                                entity(Jackson.unmarshaller()))))
         )
     }
 }
