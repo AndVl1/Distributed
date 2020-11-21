@@ -11,5 +11,6 @@ public class MainHttp {
 
     public MainHttp(ActorSystem actorSystem) {
         this.actorSystem = actorSystem;
+        routeActor = actorSystem.actorOf()
     }
 }
