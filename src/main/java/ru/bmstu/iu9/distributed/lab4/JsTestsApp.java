@@ -5,6 +5,6 @@ import akka.actor.ActorSystem;
 public class JsTestsApp {
 
     public static void main(String[] args) {
-        ActorSystem 
+        ActorSystem system = ActorSystem.create("JsTestsSystem");
     }
 }
