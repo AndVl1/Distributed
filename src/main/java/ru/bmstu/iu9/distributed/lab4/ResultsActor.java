@@ -1,4 +1,10 @@
 package ru.bmstu.iu9.distributed.lab4;
 
-public class ResultsActor {
+import akka.actor.AbstractActor;
+
+public class ResultsActor extends AbstractActor {
+    @Override
+    public Receive createReceive() {
+        return null;
+    }
 }
