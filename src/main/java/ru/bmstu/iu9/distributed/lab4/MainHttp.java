@@ -23,7 +23,9 @@ public class MainHttp {
         return route(
                 path("execute", () ->
                         route(post(() ->
-                                entity(Jackson.unmarshaller(TestRequest)))))
+                                entity(Jackson.unmarshaller(TestRequest.class), body -> {
+                                    routeActor
+                                }))))
         )
     }
 }
