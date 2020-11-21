@@ -10,6 +10,7 @@ public class JsTestsApp {
         ActorSystem system = ActorSystem.create("JsTestsSystem");
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
+        // instance
         
     }
 }
