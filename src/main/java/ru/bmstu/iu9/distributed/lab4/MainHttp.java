@@ -5,6 +5,7 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.server.Route;
 
+import static akka.http.javadsl.server.Directives.path;
 import static akka.http.javadsl.server.Directives.route;
 
 // TODO rename
@@ -20,7 +21,7 @@ public class MainHttp {
 
     public Route getRoute() {
         return route(
-                path("")
+                path("", () -> )
         )
     }
 }
