@@ -3,6 +3,7 @@ package ru.bmstu.iu9.distributed.lab4;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.http.javadsl.server.Route;
 
 // TODO rename
 public class MainHttp {
@@ -15,5 +16,7 @@ public class MainHttp {
         routeActor = actorSystem.actorOf(Props.create(RouterActor.class));
     }
 
-    
+    public Route getRoute() {
+        return 
+    }
 }
