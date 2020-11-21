@@ -27,14 +27,16 @@ public class MainHttp {
                                 entity(Jackson.unmarshaller(TestRequest.class), body -> {
                                     routeActor.tell(new TestMessage(
                                             body.getPackageId(),
-                                            body.getJsString(),
+                                            body.getJsScript(),
                                             body.getFunctionName(),
                                             body.getTests()), ActorRef.noSender());
                                     return complete(StatusCodes.OK, body.getPackageId());
-                                }))))
+                                })))),
                 path("get", () ->
                         route(get(() ->
-                                parameter("packageId"))))
+                                parameter("packageId", packageId -> {
+
+                                }))))
         );
     }
 }

@@ -2,13 +2,13 @@ package ru.bmstu.iu9.distributed.lab4;
 
 public class TestRequest {
     private String packageId;
-    private String jsString;
+    private String jsScript;
     private String functionName;
     private TestParams tests;
 
-    public TestRequest(String packageId, String jsString, String functionName, TestParams tests) {
+    public TestRequest(String packageId, String jsScript, String functionName, TestParams tests) {
         this.packageId = packageId;
-        this.jsString = jsString;
+        this.jsScript = jsScript;
         this.functionName = functionName;
         this.tests = tests;
     }
@@ -21,12 +21,12 @@ public class TestRequest {
         this.packageId = packageId;
     }
 
-    public String getJsString() {
-        return jsString;
+    public String getJsScript() {
+        return jsScript;
     }
 
-    public void setJsString(String jsString) {
-        this.jsString = jsString;
+    public void setJsScript(String jsScript) {
+        this.jsScript = jsScript;
     }
 
     public String getFunctionName() {
