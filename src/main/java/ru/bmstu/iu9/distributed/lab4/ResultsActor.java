@@ -1,2 +1,4 @@
-package ru.bmstu.iu9.distributed.lab4;public class ResultsActor {
+package ru.bmstu.iu9.distributed.lab4;
+
+public class ResultsActor {
 }
