@@ -13,7 +13,9 @@ public class ResultsActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create().match(
-                
-        );
+                ResultMessage.class, resultMessage -> {
+                    testResults.put(resultMessage.packageId, resultMessage.result);
+                }
+        ).match().build()
     }
 }
