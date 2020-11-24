@@ -16,6 +16,6 @@ public class ResultsActor extends AbstractActor {
                 ResultMessage.class, resultMessage -> {
                     testResults.put(resultMessage.packageId, resultMessage.result);
                 }
-        ).match().build()
+        ).match().build();
     }
 }
