@@ -1,14 +1,27 @@
 package ru.bmstu.iu9.distributed.lab4;
 
 public class ResultMessage {
-    public final String packageId;
-    public final TestResult result;
-    public final boolean isRequest;
+    private final String packageId;
+    private final TestResult result;
+
+    private final boolean isRequest;
 
     public ResultMessage(String packageId, TestResult result, boolean isRequest) {
         this.packageId = packageId;
         this.result = result;
         this.isRequest = isRequest;
+    }
+
+    public String getPackageId() {
+        return packageId;
+    }
+
+    public TestResult getResult() {
+        return result;
+    }
+
+    public boolean isRequest() {
+        return isRequest;
     }
 
     @Override
