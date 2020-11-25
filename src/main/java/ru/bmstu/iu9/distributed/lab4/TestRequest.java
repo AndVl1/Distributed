@@ -45,7 +45,7 @@ public class TestRequest {
         this.tests = tests;
     }
 
-    static class TestParams {
+    public static class TestParams {
         private String testName;
         private String expectedResult;
         private int[] params;

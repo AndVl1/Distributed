@@ -3,6 +3,7 @@ package ru.bmstu.iu9.distributed.lab4.actors;
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 import ru.bmstu.iu9.distributed.lab4.TestMessage;
+import ru.bmstu.iu9.distributed.lab4.TestRequest;
 import ru.bmstu.iu9.distributed.lab4.TestResult;
 
 import javax.script.Invocable;
@@ -27,7 +28,9 @@ public class TestExecutorActor extends AbstractActor {
         Invocable invocable = (Invocable) engine;
         TestResult testResult = new TestResult();
 
-        for()
+        for(TestRequest.TestParams test : message.getTests()){
+
+        }
 
         return invocable.invokeFunction(functionName, params).toString();
     }
