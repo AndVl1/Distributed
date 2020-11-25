@@ -3,10 +3,10 @@ package ru.bmstu.iu9.distributed.lab4;
 import akka.NotUsed;
 import akka.actor.ActorSystem;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.model.HttpRequest;
+import akka.http.javadsl.model.HttpResponse;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpResponse;
 
 public class JsTestsApp {
 
@@ -16,6 +16,7 @@ public class JsTestsApp {
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         MainHttp instance = new MainHttp(system);
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
-                instance.
+                instance.getRoute().flow(system, materializer);
+        
     }
 }
