@@ -1,7 +1,10 @@
-package ru.bmstu.iu9.distributed.lab4;
+package ru.bmstu.iu9.distributed.lab4.actors;
 
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
+import ru.bmstu.iu9.distributed.lab4.ResultMessage;
+import ru.bmstu.iu9.distributed.lab4.RetrieveMessage;
+import ru.bmstu.iu9.distributed.lab4.TestResult;
 
 import java.util.HashMap;
 import java.util.Map;

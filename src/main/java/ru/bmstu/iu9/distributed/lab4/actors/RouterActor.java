@@ -1,4 +1,4 @@
-package ru.bmstu.iu9.distributed.lab4;
+package ru.bmstu.iu9.distributed.lab4.actors;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
@@ -7,6 +7,8 @@ import akka.japi.pf.ReceiveBuilder;
 import akka.pattern.Patterns;
 import akka.routing.BalancingPool;
 import akka.util.Timeout;
+import ru.bmstu.iu9.distributed.lab4.RetrieveMessage;
+import ru.bmstu.iu9.distributed.lab4.TestMessage;
 import scala.concurrent.Await;
 import scala.concurrent.Future;
 
