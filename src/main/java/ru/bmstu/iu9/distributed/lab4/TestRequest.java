@@ -4,9 +4,9 @@ public class TestRequest {
     private String packageId;
     private String jsScript;
     private String functionName;
-    private TestParams tests;
+    private TestParams[] tests;
 
-    public TestRequest(String packageId, String jsScript, String functionName, TestParams tests) {
+    public TestRequest(String packageId, String jsScript, String functionName, TestParams[] tests) {
         this.packageId = packageId;
         this.jsScript = jsScript;
         this.functionName = functionName;
@@ -37,20 +37,20 @@ public class TestRequest {
         this.functionName = functionName;
     }
 
-    public TestParams getTests() {
+    public TestParams[] getTests() {
         return tests;
     }
 
-    public void setTests(TestParams tests) {
+    public void setTests(TestParams[] tests) {
         this.tests = tests;
     }
 
     public static class TestParams {
         private String testName;
         private String expectedResult;
-        private int[] params;
+        private Object params;
 
-        public TestParams(String testName, String expectedResult, int[] params) {
+        public TestParams(String testName, String expectedResult, Object params) {
             this.testName = testName;
             this.expectedResult = expectedResult;
             this.params = params;
@@ -72,7 +72,7 @@ public class TestRequest {
             this.expectedResult = expectedResult;
         }
 
-        public int[] getParams() {
+        public Object getParams() {
             return params;
         }
 

@@ -2,11 +2,11 @@ package ru.bmstu.iu9.distributed.lab4;
 
 public class ResultMessage {
     private final String packageId;
-    private final TestResult result;
+    private final TestsResults result;
 
     private final boolean isRequest;
 
-    public ResultMessage(String packageId, TestResult result, boolean isRequest) {
+    public ResultMessage(String packageId, TestsResults result, boolean isRequest) {
         this.packageId = packageId;
         this.result = result;
         this.isRequest = isRequest;
@@ -16,7 +16,7 @@ public class ResultMessage {
         return packageId;
     }
 
-    public TestResult getResult() {
+    public TestsResults getResult() {
         return result;
     }
 

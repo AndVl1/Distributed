@@ -3,14 +3,14 @@ package ru.bmstu.iu9.distributed.lab4;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TestResult {
+public class TestsResults {
     private final Map<String, Boolean> results;
 
-    public TestResult(Map<String, Boolean> results) {
+    public TestsResults(Map<String, Boolean> results) {
         this.results = results;
     }
 
-    public TestResult() {
+    public TestsResults() {
         results = new HashMap<>();
     }
 

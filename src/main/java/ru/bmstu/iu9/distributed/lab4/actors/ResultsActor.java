@@ -4,13 +4,13 @@ import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 import ru.bmstu.iu9.distributed.lab4.ResultMessage;
 import ru.bmstu.iu9.distributed.lab4.RetrieveMessage;
-import ru.bmstu.iu9.distributed.lab4.TestResult;
+import ru.bmstu.iu9.distributed.lab4.TestsResults;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ResultsActor extends AbstractActor {
-    private final Map<String, TestResult> testResults = new HashMap<>();
+    private final Map<String, TestsResults> testResults = new HashMap<>();
 
 
     @Override
