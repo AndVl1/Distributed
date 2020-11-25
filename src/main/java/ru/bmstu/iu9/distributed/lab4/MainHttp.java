@@ -6,13 +6,20 @@ import akka.actor.Props;
 import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.StatusCodes;
 import akka.http.javadsl.server.Route;
+import akka.pattern.Patterns;
+import akka.util.Timeout;
 import ru.bmstu.iu9.distributed.lab4.actors.RouterActor;
+import scala.concurrent.Await;
+import scala.concurrent.Future;
+
+import java.time.Duration;
 
 import static akka.http.javadsl.server.Directives.*;
 
 // TODO rename
 public class MainHttp {
 
+    public static final Timeout TIMEOUT = Timeout.create(Duration.ofSeconds(3));
     private ActorSystem actorSystem;
     private ActorRef routeActor;
 
@@ -36,7 +43,20 @@ public class MainHttp {
                 path("get", () ->
                         route(get(() ->
                                 parameter("packageId", packageId -> {
-
+                                    Future<Object> future = Patterns.ask(routeActor, new RetrieveMessage(packageId),
+                                            TIMEOUT);
+                                    ResultMessage resultMessage;
+                                    try {
+                                        resultMessage = (ResultMessage) Await.result(future, TIMEOUT.duration());
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        return complete(StatusCodes.INTERNAL_SERVER_ERROR, e.getLocalizedMessage());
+                                    }
+                                    if (resultMessage != null && resultMessage.getResult() != null){
+                                        return complete(StatusCodes.OK, resultMessage.getResult().toString());
+                                    } else {
+                                        return complete(StatusCodes.OK, "")
+                                    }
                                 }))))
         );
     }
