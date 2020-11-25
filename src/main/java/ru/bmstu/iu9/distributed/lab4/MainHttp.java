@@ -21,7 +21,7 @@ public class MainHttp {
 
     public static final Timeout TIMEOUT = Timeout.create(Duration.ofSeconds(3));
     private ActorSystem actorSystem;
-    private ActorRef routeActor;
+    private final ActorRef routeActor;
 
     public MainHttp(ActorSystem actorSystem) {
         this.actorSystem = actorSystem;
@@ -55,9 +55,10 @@ public class MainHttp {
                                     if (resultMessage != null && resultMessage.getResult() != null){
                                         return complete(StatusCodes.OK, resultMessage.getResult().toString());
                                     } else {
-                                        return complete(StatusCodes.OK, "")
+                                        return complete(StatusCodes.OK, "wrong packageId:" + packageId);
                                     }
-                                }))))
+                                })))),
+                complete(StatusCodes.NOT_FOUND, "wrong request")
         );
     }
 }
