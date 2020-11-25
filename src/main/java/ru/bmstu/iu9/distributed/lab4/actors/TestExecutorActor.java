@@ -2,6 +2,7 @@ package ru.bmstu.iu9.distributed.lab4.actors;
 
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
+import ru.bmstu.iu9.distributed.lab4.ResultMessage;
 import ru.bmstu.iu9.distributed.lab4.TestMessage;
 import ru.bmstu.iu9.distributed.lab4.TestRequest;
 import ru.bmstu.iu9.distributed.lab4.TestsResults;
@@ -15,7 +16,9 @@ public class TestExecutorActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(TestMessage.class, testMessage -> {
-                    TestsResults result = new TestsResults();
+                    System.out.println("Running " + testMessage.toString());
+                    TestsResults result = runTests(testMessage) ;
+                    sender().tell(new ResultMessage(testMessage.getPackageId(), result, true), self());
                 })
                 .build();
     }
