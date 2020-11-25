@@ -22,8 +22,11 @@ public class TestExecutorActor extends AbstractActor {
     private TestResult runTests(TestMessage message) throws Exception{
         ScriptEngine engine = new
                 ScriptEngineManager().getEngineByName("nashorn");
-        engine.eval(jscript);
+        engine.eval(message.getJsScript());
+
         Invocable invocable = (Invocable) engine;
+        TestResult testResult = new TestResult();
+
         return invocable.invokeFunction(functionName, params).toString();
     }
 }
