@@ -15,6 +15,9 @@ import java.util.concurrent.CompletionStage;
 
 public class JsTestsApp {
 
+    public static final String HOST = "localhost";
+    public static final int PORT = 8080;
+
     public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create("JsTestsSystem");
         final Http http = Http.get(system);
@@ -23,8 +26,8 @@ public class JsTestsApp {
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
                 instance.getRoute().flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
-                routeFlow, ConnectHttp.toHost("localhost", 8080), materializer);
-        System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
+                routeFlow, ConnectHttp.toHost(HOST, PORT), materializer);
+        System.out.println("Server online at http://"+HOST+":"+PORT+"/\nPress RETURN to stop...");
         System.in.read();
         binding
                 .thenCompose(ServerBinding::unbind)
